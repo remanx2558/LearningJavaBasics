@@ -17,21 +17,7 @@ public abstract class ParkingSpotManager {
         this.parkingStrategy=parkingStrategy;
     }
 
-    public void addPS(ParkingSpot parkingSpot){
-        parkingSpotList.add(parkingSpot);
-    }
-
-
     public ParkingSpot findAvailableParkingSpot(Ticket ticket){
         return parkingStrategy.search(parkingSpotList,ticket);
-    }
-    public void removeVehicle(Vehicle vehicle, ParkingSpot parkingSpot) {
-        parkingSpot.removeVehicle();
-    }
-
-    public void parkVehicle(Vehicle vehicle, ParkingSpot parkingSpot) {
-        if (parkingSpot.isAvailable()) {
-            parkingSpot.parkVehicle(vehicle);
-        }
     }
 }

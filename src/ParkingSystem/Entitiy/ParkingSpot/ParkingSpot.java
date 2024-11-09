@@ -8,10 +8,6 @@ public class ParkingSpot {
     Vehicle vehicle;
     int psId;
 
-    ParkingSpot(){
-        isEmpty=true;
-    }
-
     ParkingSpot(int psId){
         this.psId=psId;
         this.isEmpty=true;
