@@ -3,15 +3,10 @@ package ParkingSystem;
 import ParkingSystem.Entitiy.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import ParkingSystem.Entitiy.Gate.EntryGate;
-import ParkingSystem.Entitiy.Gate.ExitGate;
-import ParkingSystem.Entitiy.Gate.Gate;
 import ParkingSystem.Entitiy.Vehicle.FourWheelerVehicle;
 import ParkingSystem.Entitiy.Vehicle.TwoWheelerVehicle;
 import ParkingSystem.Entitiy.Vehicle.Vehicle;
-import ParkingSystem.Exception.ParkingSystemException;
 import ParkingSystem.Strategy.Payment.CreditCardPayment;
-import ParkingSystem.Strategy.Pricing.HourlyPricingStrategy;
 
 public class ParkingSystemClient {
     private static final Logger logger = Logger.getLogger(ParkingSystemClient.class.getName());

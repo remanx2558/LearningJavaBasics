@@ -29,14 +29,4 @@ public class EntryGate extends Gate {
         spot.parkVehicle(vehicle);
         return ticket;
     }
-
-    private Ticket generateTicket(Vehicle vehicle, ParkingSpot parkingSpot) {
-
-        Ticket ticket = new Ticket();
-        ticket.setVehicle(vehicle);
-        ticket.setEntryTime(LocalDateTime.now());
-        ticket.setEntryGate(this);
-        ticket.setParkingSpot(parkingSpot);
-        return ticket;
-    }
 }

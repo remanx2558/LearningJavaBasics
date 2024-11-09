@@ -21,19 +21,17 @@ public abstract class ParkingSpotManager {
         parkingSpotList.add(parkingSpot);
     }
 
-    public void removePS(ParkingSpot parkingSpot){
-        if(parkingSpotList.contains(parkingSpot)){
-            parkingSpotList.remove(parkingSpot);
-        }
-
-    }
 
     public ParkingSpot findAvailableParkingSpot(Ticket ticket){
         return parkingStrategy.search(parkingSpotList,ticket);
     }
+    public void removeVehicle(Vehicle vehicle, ParkingSpot parkingSpot) {
+        parkingSpot.removeVehicle();
+    }
 
-    public abstract void parkVehicle(Vehicle vehicle, ParkingSpot parkingSpot);
-
-    public abstract void removeVehicle(Vehicle vehicle,ParkingSpot parkingSpot);
-
+    public void parkVehicle(Vehicle vehicle, ParkingSpot parkingSpot) {
+        if (parkingSpot.isAvailable()) {
+            parkingSpot.parkVehicle(vehicle);
+        }
+    }
 }

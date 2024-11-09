@@ -24,8 +24,8 @@ public class ExitGate extends Gate {
             System.out.println("No ticket found for vehicle number " + ticket.getVehicle().getVehicleNumber());
             return 0;
         }
-       // ticket.setExitTime(LocalDateTime.now().plusHours(1));
-        ticket.setExitTime(LocalDateTime.now());
+        ticket.setExitTime(LocalDateTime.now().plusHours(1));
+       // ticket.setExitTime(LocalDateTime.now());
         ticket.getParkingSpot().removeVehicle();
         CostComputation costComputation=costComputationFactory.getManager(ticket.getVehicle().getType());
         int parkingCharges= costComputation.computePrice(ticket);

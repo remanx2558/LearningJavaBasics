@@ -2,7 +2,6 @@ package ParkingSystem;
 
 import ParkingSystem.Entitiy.Gate.EntryGate;
 import ParkingSystem.Entitiy.Gate.ExitGate;
-import ParkingSystem.Entitiy.Gate.Gate;
 import ParkingSystem.Entitiy.ParkingSpot.FourWheelerParkingSpot;
 import ParkingSystem.Entitiy.ParkingSpot.Manager.ParkingSpotManagerFactory;
 import ParkingSystem.Entitiy.ParkingSpot.ParkingSpot;
@@ -11,8 +10,6 @@ import ParkingSystem.Entitiy.Ticket;
 import ParkingSystem.Entitiy.Vehicle.Vehicle;
 import ParkingSystem.Exception.ParkingSystemException;
 import ParkingSystem.Strategy.Payment.PaymentStrategy;
-
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;

@@ -10,5 +10,4 @@ public abstract class Gate {
     }
 
     public int getId() { return id; }
-    public String getLocation() { return location; }
 }

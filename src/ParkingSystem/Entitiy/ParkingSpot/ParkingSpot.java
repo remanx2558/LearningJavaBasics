@@ -9,7 +9,7 @@ public class ParkingSpot {
     int psId;
 
     ParkingSpot(){
-       isEmpty=true;
+        isEmpty=true;
     }
 
     ParkingSpot(int psId){
@@ -27,10 +27,6 @@ public class ParkingSpot {
     public void removeVehicle(){
         vehicle=null;
         isEmpty=true;
-    }
-
-    public int getPrice() {
-        return 10;
     }
 
     public boolean isAvailable(){

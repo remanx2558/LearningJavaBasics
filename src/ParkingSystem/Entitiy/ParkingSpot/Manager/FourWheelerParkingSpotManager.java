@@ -12,15 +12,6 @@ public class FourWheelerParkingSpotManager extends ParkingSpotManager {
         super(parkingSpots, parkingStrategy);
     }
 
-    public void parkVehicle(Vehicle vehicle, ParkingSpot parkingSpot) {
-        if (parkingSpot.isAvailable()) {
-            parkingSpot.parkVehicle(vehicle);
-        }
-    }
 
-    public void removeVehicle(Vehicle vehicle, ParkingSpot parkingSpot) {
-
-        parkingSpot.removeVehicle();
-    }
 }
 

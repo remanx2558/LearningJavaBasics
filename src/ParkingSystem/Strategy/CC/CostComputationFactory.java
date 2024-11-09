@@ -16,10 +16,6 @@ public class CostComputationFactory {
     private static TwoWheelerCostComputation twoWheelerCostComputation;
     private static FourWheelerCostComputation fourWheelerCostComputation;
 
-    private static List<ParkingSpot> twoWheelerParkingSpots;
-    private static List<ParkingSpot> fourWheelerParkingSpots;
-
-
     public static CostComputation getManager(VehicleType type) {
         if (type == VehicleType.TWO_WHEELER) {
             if (twoWheelerCostComputation == null) {
