@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 public class EntryGate extends Gate {
 
     public EntryGate(int i, String s) {
-        super(i,s);
+        super(i,s);//use less commennt added
     }
 
     public Ticket findSpaceAndGenerateTicket(Vehicle vehicle) {
