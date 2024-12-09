@@ -1,32 +1,36 @@
-name: Export draw.io Diagrams
+name: Keep draw.io export synchronized
 
 on:
   push:
     branches:
       - main
     paths:
-      - '**/*.drawio'
+      - "**/*.drawio"
+      - ".github/workflows/drawio-export.yml"
 
 jobs:
-  export-drawio:
+  drawio-export:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout Repository
+      - name: Checkout sources
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0  # Ensure full repository history if needed for 'auto'/'changed' modes
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Draw.io Export Action
-        uses: rlespinasse/drawio-export-action@v2.24.0
+      - name: Export drawio files to png files
+        uses: rlespinasse/drawio-export-action@v2
         with:
-          format: png
-          action-mode: all
           path: src/Zepto
-          output: export
+          format: png
+          transparent: true
+          action-mode: all
+          output: drawio-assets
 
-      - name: Commit Changes
+      - name: Commit changed files
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: 'Automated export of draw.io diagrams'
-          file_pattern: export/ZeptoLLD.png
+          commit_message: "docs: sync draw.io exported files"
+          commit_user_name: "github-actions"
+          commit_user_email: "github-actions@github.com"
+          file_pattern: drawio-assets/*.png
