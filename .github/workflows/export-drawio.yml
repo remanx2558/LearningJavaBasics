@@ -15,18 +15,18 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0  # Ensure full commit history
+          fetch-depth: 0  # Ensure full repository history if needed for 'auto'/'changed' modes
 
       - name: Draw.io Export Action
         uses: rlespinasse/drawio-export-action@v2.24.0
         with:
           format: png
-          action-mode: manual
-        env:
-          DRAWIO_FILES: src/Zepto/ZeptoLLD.drawio
+          action-mode: all
+          path: src/Zepto
+          output: export
 
       - name: Commit Changes
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: 'Automated export of draw.io diagrams'
-          file_pattern: src/Zepto/ZeptoLLD.png
+          file_pattern: export/ZeptoLLD.png
