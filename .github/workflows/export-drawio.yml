@@ -15,8 +15,8 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Export draw.io Diagrams to PNG
-        uses: drawio-actions/drawio-export@v2
+      - name: Draw.io Export Action
+        uses: rlespinasse/drawio-export-action@v2.24.0
         with:
           files: |
             src/Zepto/ZeptoLLD.drawio
