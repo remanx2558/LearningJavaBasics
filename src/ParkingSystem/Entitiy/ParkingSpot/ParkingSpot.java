@@ -1,5 +1,6 @@
 package ParkingSystem.Entitiy.ParkingSpot;
 
+import ParkingSystem.Entitiy.Location;
 import ParkingSystem.Entitiy.Vehicle.Vehicle;
 import ParkingSystem.ParkingSystem;
 
@@ -7,10 +8,16 @@ public class ParkingSpot {
     public boolean isEmpty;
     Vehicle vehicle;
     int psId;
+    Location location;
 
-    ParkingSpot(int psId){
+    ParkingSpot(int psId, Location location){
         this.psId=psId;
         this.isEmpty=true;
+        this.location=location;
+    }
+
+    public Location getLocation(){
+        return location;
     }
 
 

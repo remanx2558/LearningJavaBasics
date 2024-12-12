@@ -18,6 +18,10 @@ public abstract class ParkingSpotManager {
     }
 
     public ParkingSpot findAvailableParkingSpot(Ticket ticket){
+        return this.parkingStrategy.search(parkingSpotList,ticket);
+    }
+
+    public ParkingSpot findAvailableParkingSpot(Ticket ticket, ParkingStrategy parkingStrategy){
         return parkingStrategy.search(parkingSpotList,ticket);
     }
 }

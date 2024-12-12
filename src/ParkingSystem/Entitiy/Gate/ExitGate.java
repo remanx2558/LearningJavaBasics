@@ -1,38 +1,37 @@
 package ParkingSystem.Entitiy.Gate;
 
-import ParkingSystem.Entitiy.ParkingSpot.Manager.ParkingSpotManager;
-import ParkingSystem.Entitiy.ParkingSpot.Manager.ParkingSpotManagerFactory;
+import ParkingSystem.Entitiy.Location;
 import ParkingSystem.Entitiy.Ticket;
+import ParkingSystem.Services.PaymentService;
 import ParkingSystem.Strategy.CC.CostComputation;
 import ParkingSystem.Strategy.CC.CostComputationFactory;
 import ParkingSystem.Strategy.Payment.PaymentStrategy;
 
 import java.time.LocalDateTime;
+import java.util.logging.Logger;
 
 public class ExitGate extends Gate {
-    private CostComputationFactory costComputationFactory;
 
+    private static final Logger logger = Logger.getLogger(ExitGate.class.getName());
+    private PaymentService paymentService;
 
-    public ExitGate(int i, String s) {
-        super(i, s);
-        costComputationFactory=new CostComputationFactory();
+    public ExitGate(int id, Location location, PaymentService paymentService) {
+        super(id, location);
+        this.paymentService = paymentService;
     }
 
-    public int exitVehicleAndMakePayment(Ticket ticket, PaymentStrategy paymentStrategy) {
-        ParkingSpotManager manager = ParkingSpotManagerFactory.getManager(ticket.getVehicle().getType());
-        if (ticket == null) {
-            System.out.println("No ticket found for vehicle number " + ticket.getVehicle().getVehicleNumber());
-            return 0;
-        }
-        ticket.setExitTime(LocalDateTime.now().plusHours(1));
-       // ticket.setExitTime(LocalDateTime.now());
-        ticket.getParkingSpot().removeVehicle();
-        CostComputation costComputation=costComputationFactory.getManager(ticket.getVehicle().getType());
-        int parkingCharges= costComputation.computePrice(ticket);
-        System.out.println("pc"+parkingCharges);
-        ticket.setTotalParkingChages(parkingCharges);
-        paymentStrategy.processPayment(parkingCharges);
-        return parkingCharges;
+    public int processVehicleExit(Ticket ticket) {
+        int charges = paymentService.processPayment(ticket);
+        ticket.setExitGate(this);
+        logger.info("Vehicle " + ticket.getVehicle().getVehicleNumber() + " exited via gate " + getId() + ", charges: " + charges);
+        return charges;
+    }
+
+    public int processVehicleExit(Ticket ticket,PaymentStrategy paymentStrategy) {
+        int charges = paymentService.processPayment(ticket,paymentStrategy);
+        ticket.setExitGate(this);
+        logger.info("Vehicle " + ticket.getVehicle().getVehicleNumber() + " exited via gate " + getId() + ", charges: " + charges);
+        return charges;
     }
 
 }
