@@ -5,4 +5,8 @@ public class Floor {
     public Floor(int floorNumber){
         this.floorNumber = floorNumber;
     }
+    @Override
+    public String toString() {
+        return "Floor " + floorNumber;
+    }
 }

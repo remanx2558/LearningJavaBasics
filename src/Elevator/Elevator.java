@@ -1,12 +1,17 @@
 package Elevator;
 
+import Elevator.state.ElevatorState;
+import Elevator.state.IdleState;
+import Elevator.state.StoppedState;
+
 import java.util.Iterator;
 import java.util.PriorityQueue;
 
 public class Elevator {
     int elevatorNumber;
-    Direction direction;
-    Status status;
+    private Direction direction;
+    private Status status;
+    private ElevatorState state;
 
     //max floor can go
     //min floor can go
@@ -19,12 +24,32 @@ public class Elevator {
     public Elevator(int elevatorNumber){
         this.elevatorNumber = elevatorNumber;
         direction = Direction.UP;
-        status=Status.ACTIVE;
-
+        status= Status.INACTIVE;
+        this.state = new IdleState();
         upList=new PriorityQueue<Floor>((a,b)->a.floorNumber-b.floorNumber);//min-heap
         downList=new PriorityQueue<Floor>((a,b)->b.floorNumber-a.floorNumber);//max-heap
         currFloor=new Floor(0);
     }
+    public Direction getDirection() {
+        return direction;
+    }
+
+    public void setDirection(Direction direction) {
+        this.direction = direction;
+    }
+
+    public ElevatorState getState() {
+        return state;
+    }
+
+    public void setState(ElevatorState state) {
+        this.state = state;
+    }
+
+    public Floor getCurrentFloor() {
+        return currFloor;
+    }
+
 
     public Floor getDestinationFloor(){
         PriorityQueue<Floor> currList=null;
@@ -47,6 +72,10 @@ public class Elevator {
         return lastElement;
     }
 
+    public boolean hasPendingRequests() {
+        return !upList.isEmpty() || !downList.isEmpty();
+    }
+
     public void queueRequest(TravelRequest req){
         //now we have to add it in here
         if(req.destinationFloor.floorNumber>currFloor.floorNumber){
@@ -56,35 +85,68 @@ public class Elevator {
             downList.add(new Floor(req.destinationFloor.floorNumber));
         }
         else{
-            //throw exception ki same floor ki bachodi
+            if (req.getDirection() == Direction.UP) {
+                upList.add(req.getDestinationFloor());
+            } else if (req.getDirection() == Direction.DOWN) {
+                downList.add(req.getDestinationFloor());
+            }
         }
 
     }
 
-    public void stop(){
-        status=Status.INACTIVE;
-    }
+
 
     public void start() throws InterruptedException {
-        status=Status.ACTIVE;
-
-        moveLift();
-        direction=direction==Direction.UP?Direction.DOWN:Direction.UP;
-        moveLift();
-        direction=direction==Direction.UP?Direction.DOWN:Direction.UP;
-
+        this.status = Status.ACTIVE;
+        if (this.direction == Direction.STOP) {
+            // If no direction, elevator is idle
+            setState(new IdleState());
+        }
+        // Let the state handle movement
+        while (this.status == Status.ACTIVE && (hasPendingRequests() || this.direction != Direction.STOP)) {
+            state.move(this);
+        }
+    }
+    public void stop() {
+        this.status = Status.INACTIVE;
+        this.setState(new StoppedState());
     }
 
     private void moveLift() throws InterruptedException {
 
         PriorityQueue<Floor> currList=direction==Direction.UP?upList:downList;
         //iterate it
-        while(!currList.isEmpty() && status==Status.ACTIVE){
-            Floor currFloor=currList.poll();
-            this.currFloor=currFloor;
-            System.out.println("Curr Floor:"+currFloor.floorNumber);
-            Thread.sleep(1000);
+        while(true){
+            //have requests
+            //direction man
+            processNextFloor();
         }
+    }
+
+    public void handleRequest(TravelRequest request) throws InterruptedException {
+        state.onRequest(this, request);
+        if (this.status == Status.INACTIVE) {
+            this.status = Status.ACTIVE;
+            start();
+        }
+    }
+
+    public void processNextFloor() throws InterruptedException {
+        PriorityQueue<Floor> currList = (direction == Direction.UP) ? upList : downList;
+        if (!currList.isEmpty()) {
+            Floor nextFloor = currList.poll();
+            // Simulate travel time
+            simulateTravelTime();
+            currFloor = nextFloor;
+            System.out.println("Elevator " + elevatorNumber + " is now at Floor: " + currFloor.floorNumber);
+        } else {
+            // No floors in the current direction queue
+            direction = Direction.STOP;
+        }
+    }
+
+    private void simulateTravelTime() throws InterruptedException {
+        Thread.sleep(500);
     }
 
 }

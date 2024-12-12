@@ -16,4 +16,16 @@ public class TravelRequest {
             direction=Direction.UP;
         }
     }
+
+    public Floor getCurrentFloor() {
+        return currFloor;
+    }
+
+    public Floor getDestinationFloor() {
+        return destinationFloor;
+    }
+
+    public Direction getDirection() {
+        return direction;
+    }
 }
