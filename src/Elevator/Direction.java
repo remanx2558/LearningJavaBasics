@@ -1,6 +1,6 @@
 package Elevator;
 
-public enum Movement {
+public enum Direction {
     STOP,
     UP,
     DOWN
