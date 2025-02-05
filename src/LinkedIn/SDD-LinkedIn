@@ -1,0 +1,7 @@
+
+
+I correctly identified the use of the
+- Observer pattern for notifications and alerts,
+- the Strategy pattern for searching,
+- the Builder and Factory patterns for object creation, and
+- the Command pattern for managing connection requests.

@@ -1,0 +1,94 @@
+Topic 1: simple thinking Flow
+
+
+- person: basic login logout
+
+- company:  can create post , seen by it followers
+- company: can created an job opening made it public
+
+- person : send and receive request from other
+- person : send and receive messages from other
+- person : create post and see other person posts
+- person : views jobs and apply to it : related to an company
+- person : can associate to an company
+- person : have other details: name, school, experience, certification, bio, posts.
+- person: can join any group
+
+- we can search some other user, company, job
+- should able to follow other user withour connecting with them
+- user should see friends, search appearences, post impressions, see own profiles
+- user can request and recommend others
+- user should be notified of connection, message, post, comments
+- user can cretate company page, follow other page using this page, companuny page can have many jobs
+- user can join or exit groups
+
+
+
+
+
+
+
+Topic 2: Questions need to ask
+
+
+    - Discoverability : How can users search the job opportunities for themselves?
+
+    - Discoverability : How are companies able to find out the perfect match for their job openings?
+
+    - Discoverability : How are users able to search other users’ profiles?
+
+    - Discoverability : Can users search for other users using their company name/employment history and job type?
+
+    - Connection: How are users able to connect with other users?
+
+    - Connection: Can a page connect with other pages as well?
+
+    - Connection: How can users follow or unfollow the pages without becoming a direct connection?
+
+    - GroupPageJobs: Can the users create both groups and pages in addition to their user profiles?
+
+    - GroupPageJobs:Can both the users and companies create groups and pages?
+
+    - GroupPageJobs:Can the individual user post a job?
+
+    - GroupPageJobs:Can a user join any group, or are there any criteria for joining the group?
+
+    - Alerts: How will users be notified of preselected events?
+
+    - Alerts: How much control do users have in choosing what notifications they can receive?
+
+
+
+Topic 3: Actual Requirement
+
+
+Topic 3: Classes
+
+Job:
+- Company
+- job Details
+- Apply Link
+- People Applied
+
+
+Search Engine
+-search based on company
+-search based on people
+-search based on time line
+
+User:
+- Details
+- Company
+- should add information
+- search other things
+- send/unsend request and also accept/ignore request
+- crate new post/ edit post/ delete post
+- should able to comment or react to others post
+- messaging
+
+
+Compnay:
+- Job: create or delete it
+- company as an page
+
+POST
