@@ -1,19 +1,28 @@
 package LinkedIn;
 
-import java.io.ByteArrayInputStream;
+
+import java.util.List;
 
 public class Profile {
-    Byte[] profilePicture;
+
+    private byte[] profilePicture;
+    private String title;
+    private String about;
+    private List<Experience> experiences;
+    private List<Education> educations;
+    private List<Skill> skills;
+    private List<Achievement> achievements;
+    private Analytics analytics;
+
+    public void addExperience(Experience exp) { }
+    public void addAchievement(Achievement ach) { }
+
+
     Byte[]coverPhotot;
     String headline;
-    String about;
     String gender;
-    Education[] educations;
-    Experience[] experiences;
-    Skill[] skills;
-    Achievements[] achievements;
+
     Recommendation[] recommendations;
-    Analytics analytics;
 
 
 
@@ -22,14 +31,10 @@ public class Profile {
     boolean removeSkill(String skillId){return false;}
 
 
-    boolean addExperience(Experience experience){return false;}
     boolean removeExperience(String experienceId){return false;}
 
     boolean addEducation(Education education){return false;}
     boolean removeEducation(String educationId){return false;}
-
-
-    boolean addAchievement(Achievements achievements){return false;}
 
 
 }

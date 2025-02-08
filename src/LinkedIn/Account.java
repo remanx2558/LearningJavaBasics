@@ -1,14 +1,14 @@
 package LinkedIn;
 
 public class Account {
-    AccountStatus status;
-    String accountId;
-    String userName;
-    String password;
-    String email;
+    private AccountStatus status;
+    private String accountId;
+    private String username;
+    private String password;
+    private String email;
 
-
-    boolean resetPassword(){
-        return false;
+    public boolean resetPassword(String type) {
+        // Password reset logic
+        return true;
     }
 }

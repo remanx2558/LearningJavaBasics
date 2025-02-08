@@ -7,7 +7,7 @@ public class SearchEngine {
 
 
     User[] allUsers;
-    Company[] allCompanies;
+    CompanyPage[] allCompanies;
 
 
 }

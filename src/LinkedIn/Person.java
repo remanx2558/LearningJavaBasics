@@ -1,8 +1,7 @@
 package LinkedIn;
 
-public class Person {
-    String name;
-    Address address;
-    String phone;
-    Account account;
+public abstract class Person {
+    protected String name;
+    protected Address address;
+    protected Account account;
 }

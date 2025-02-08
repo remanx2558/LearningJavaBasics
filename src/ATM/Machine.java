@@ -109,7 +109,7 @@ public class Machine {
     }
 
     void logIn(Card cardDetails, String password){
-        currentUser=bankServer.getUserDetail(cardDetails,password);
+        //currentUser=bankServer.getUserDetail(cardDetails,password);
     }
 
 

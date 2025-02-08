@@ -1,8 +1,13 @@
 package LinkedIn;
 
 public class Analytics {
+
+    private int searchAppearances;
+    private int profileViews;
+    private int totalConnections;
+
+
     int searchAppearences;
-    int profileViews;
     int postImpressions;
     int totolConnections;
 }

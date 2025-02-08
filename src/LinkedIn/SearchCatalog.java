@@ -5,14 +5,14 @@ import java.util.Map;
 public class SearchCatalog implements Search{
 
     Map<String, User[]> users;
-    Map<String, Company[]> companies;
+    Map<String, CompanyPage[]> companies;
     Map<String, Job[]> jobs;
     Map<String, Group[]> groups;
 
     //
 
     void addNewUser(User user){}
-    void addNewCompany(Company company){}
+    void addNewCompany(CompanyPage company){}
     void addNewJob(Job job){}
     void addNewGroup(Group group){}
 
@@ -27,8 +27,8 @@ public class SearchCatalog implements Search{
     }
 
     @Override
-    public Company[] searchCompany(String name) {
-        return new Company[0];
+    public CompanyPage[] searchCompany(String name) {
+        return new CompanyPage[0];
     }
 
     @Override

@@ -1,8 +1,6 @@
 package LinkedIn;
 
 public enum AccountStatus {
-    ACTIVE,
-    DEACTIVED,
-    DELETE,
-    BLOCKED
+    ACTIVE, INACTIVE, SUSPENDED, CLOSED
 }
+

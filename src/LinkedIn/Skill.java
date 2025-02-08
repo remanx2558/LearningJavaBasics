@@ -1,8 +1,9 @@
 package LinkedIn;
 
 public class Skill {
-    String name;
+    private String name;
+
     int experience;
-    Company[] usedIn;
+    CompanyPage[] usedIn;
     String skillId;
 }
