@@ -14,7 +14,6 @@ public class User extends Person{
 
 
     private static final Logger LOGGER = Logger.getLogger(User.class.getName());
-    private String username;
     private PersonalDetail personalDetail;
     private boolean active;
     private Set<User> connections;
@@ -26,12 +25,14 @@ public class User extends Person{
     private Set<User> followers;
     private Set<User> following;
     private int profileViews;
-    private int postImpressions;
     private int searchAppearances;
 
     // For recommendations (R6)
     private List<Recommendation> recommendationsReceived;
     private List<Recommendation> recommendationsGiven;
+
+    //For Posts
+    private List<Post> posts;
 
 
 
@@ -57,7 +58,8 @@ public class User extends Person{
         this.followers = new HashSet<>();
         this.following = new HashSet<>();
         this.profileViews = 0;
-        this.postImpressions = 0;
+        this.posts=new ArrayList<>();
+
         this.searchAppearances = 0;
         this.recommendationsReceived = new ArrayList<>();
         this.recommendationsGiven = new ArrayList<>();
@@ -85,7 +87,6 @@ public class User extends Person{
     public Set<User> getFollowing() { return following; }
 
     public int getProfileViews() { return profileViews; }
-    public int getPostImpressions() { return postImpressions; }
     public int getSearchAppearances() { return searchAppearances; }
 
     public List<Recommendation> getRecommendationsReceived() { return recommendationsReceived; }
@@ -96,9 +97,13 @@ public class User extends Person{
         profileViews++;
     }
 
-    public void incrementPostImpressions() {
-        postImpressions++;
+    public void addPost(Post newPost){
+        posts.add(newPost);
+       // linkedInApp.addPost(this);
+        //notify every connection regarding the post
     }
+
+
 
     public void incrementSearchAppearances() {
         searchAppearances++;
@@ -210,7 +215,6 @@ public class User extends Person{
                 "username='" + username + '\'' +
                 ", active=" + active +
                 ", profileViews=" + profileViews +
-                ", postImpressions=" + postImpressions +
                 ", searchAppearances=" + searchAppearances +
                 ", personalDetail=" + personalDetail +
                 '}';

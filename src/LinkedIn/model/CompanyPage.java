@@ -9,11 +9,10 @@ import java.util.List;
 import java.util.Set;
 import java.util.logging.Logger;
 
-public class CompanyPage {
+public class CompanyPage extends DigitalSignature {
 
     private static final Logger LOGGER = Logger.getLogger(CompanyPage.class.getName());
     private String companyName;
-    private User createdBy;
     private List<Job> jobs;
     private Set<User> followers;  // R11: Support for following company pages
 
@@ -25,19 +24,25 @@ public class CompanyPage {
         LOGGER.info(createdBy.getUsername() + " created company page: " + companyName);
     }
 
+    //Getters
     public String getCompanyName() { return companyName; }
     public User getCreatedBy() { return createdBy; }
     public List<Job> getJobs() { return jobs; }
     public Set<User> getFollowers() { return followers; }
 
+
+    //Setters
     public void addJob(Job job) {
         jobs.add(job);
         LOGGER.info("Job added: " + job.getJobTitle() + " to company: " + companyName);
     }
 
+    public void removeJob(Job job){
+        jobs.remove(job);
+    }
+
     public void addFollower(User user) {
         followers.add(user);
-        LOGGER.info(user.getUsername() + " is now following company: " + companyName);
         NotificationMediator.notifyUser(createdBy, user.getUsername() + " started following your company page " + companyName);
     }
 
@@ -50,28 +55,4 @@ public class CompanyPage {
                 ", followers=" + followers +
                 '}';
     }
-
-
-    private int pageId;
-    private String title;
-    private String about;
-    private String companyType;
-    private int companySize;
-    private User admin;
-
-    public boolean createJobPosting(Job job) { return true; }
-    public boolean deleteJobPosting(Job job) { return true; }
-
-
-
-    Post[] posts;
-    String companyId;
-
-    String type;
-    String description;
-    String name;
-
-    boolean createJobPosting(){return false;}
-    boolean deleteJobPosting(){return false;}
-
 }

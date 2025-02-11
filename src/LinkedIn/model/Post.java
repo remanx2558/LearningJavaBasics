@@ -9,16 +9,17 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
-public class Post {
+public class Post extends DigitalSignature {
 
     private static final Logger LOGGER = Logger.getLogger(Post.class.getName());
     private String content;
-    private User createdBy;
+    private int postImpressions;
     private Map<User, String> reactions; // R8: Reaction functionality
 
     public Post(String content, User createdBy) {
         this.content = content;
         this.createdBy = createdBy;
+        this.postImpressions = 0;
         this.reactions = new HashMap<>();
     }
 
@@ -26,9 +27,13 @@ public class Post {
     public User getCreatedBy() { return createdBy; }
     public Map<User, String> getReactions() { return reactions; }
 
+    public int getPostImpressions() { return postImpressions; }
+
+    public void incrementPostImpressions() {
+        postImpressions++;
+    }
     public void addReaction(User user, String reaction) {
         reactions.put(user, reaction);
-        LOGGER.info(user.getUsername() + " reacted with " + reaction + " on post by " + createdBy.getUsername());
         NotificationMediator.notifyUser(createdBy, user.getUsername() + " reacted on your post.");
     }
 
@@ -41,7 +46,6 @@ public class Post {
     public Post sharePost(User sharer) {
         String sharedContent = "Shared: " + content;
         Post sharedPost = new Post(sharedContent, sharer);
-        LOGGER.info(sharer.getUsername() + " shared a post originally by " + createdBy.getUsername());
         NotificationMediator.notifyUser(createdBy, sharer.getUsername() + " shared your post.");
         return sharedPost;
     }

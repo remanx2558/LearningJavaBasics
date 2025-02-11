@@ -5,13 +5,13 @@ import LinkedIn.notification.NotificationMediator;
 
 import java.util.*;
 
-public class Comment {
+public class Comment extends DigitalSignature{
 
     private String content;
-    private User createdBy;
     private Post post;
     private Map<User, String> reactions; // R8: Reactions on a comment
-    private List<Comment> replies;       // Replies to this comment
+    private List<Comment> replies;
+
 
     public Comment(String content, User createdBy, Post post) {
         this.content = content;
@@ -19,7 +19,10 @@ public class Comment {
         this.post = post;
         this.reactions = new HashMap<>();
         this.replies = new ArrayList<>();
+        createdAt= new Date();
     }
+
+    //Getters
 
     public String getContent() { return content; }
     public User getCreatedBy() { return createdBy; }
@@ -27,6 +30,7 @@ public class Comment {
     public Map<User, String> getReactions() { return reactions; }
     public List<Comment> getReplies() { return replies; }
 
+    //Setters
     public void addReaction(User user, String reaction) {
         reactions.put(user, reaction);
         NotificationMediator.notifyUser(createdBy, user.getUsername() + " reacted on your comment.");
@@ -37,6 +41,13 @@ public class Comment {
         NotificationMediator.notifyUser(createdBy, reply.getCreatedBy().getUsername() + " replied to your comment.");
     }
 
+    public void updateText(String updateContent, User updater) {
+        content=updateContent;
+        updatedBy=updater;
+        updatedAt= new Date();
+    }
+
+    //Sinature
     @Override
     public String toString() {
         return "Comment{" +
@@ -47,18 +58,4 @@ public class Comment {
                 ", replies=" + replies +
                 '}';
     }
-
-    private int commentId;
-    private User commenter;
-    private String text;
-    private int totalReacts;
-    private List<Comment> comments;
-
-    public boolean updateText(String newText) { return true; }
-
-
-    User commentOwner;
-    Date timeStamp;
-
-    boolean updateText(){return false;}
 }

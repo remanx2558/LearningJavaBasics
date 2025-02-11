@@ -8,10 +8,10 @@ import java.util.Set;
 
 public class LinkedInApp {
     // Main collections
-    Set<User> users;
-    Set<CompanyPage> companies;
+    public Set<User> users;
+    public Set<CompanyPage> companies;
     Set<Post> posts;
-    Set<Comment> comments;
+    public Set<Comment> comments;
     Set<Group> groups;
 
     public LinkedInApp() {

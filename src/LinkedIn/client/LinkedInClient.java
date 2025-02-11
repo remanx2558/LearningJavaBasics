@@ -109,11 +109,11 @@ public class LinkedInClient {
         // R5: Simulate some profile metrics
         user1.incrementProfileViews();
         user1.incrementProfileViews();
-        user1.incrementPostImpressions();
+       // user1.incrementPostImpressions();
         user1.incrementSearchAppearances();
         LOGGER.info(user1.getUsername() + " Metrics: Connections=" + user1.getConnections().size() +
                 ", ProfileViews=" + user1.getProfileViews() +
-                ", PostImpressions=" + user1.getPostImpressions() +
+              //  ", PostImpressions=" + user1.getPostImpressions() +
                 ", SearchAppearances=" + user1.getSearchAppearances());
 
 
@@ -187,7 +187,7 @@ public class LinkedInClient {
         // 13. Some user creates a post (let user3 create a post)
 
         Post newPost = new Post("Check out my new blog post on software development!", user3);
-        linkedInApp.addPost(newPost);
+        user3.addPost(newPost);
         LOGGER.info(user3.getUsername() + " created a new post: " + newPost.getContent());
         // Notify all other users about the new post
         for (User user : linkedInApp.users) {
