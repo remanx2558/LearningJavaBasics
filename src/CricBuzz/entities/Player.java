@@ -2,6 +2,7 @@ package CricBuzz.entities;
 
 import CricBuzz.*;
 import CricBuzz.enums.PlayerType;
+import CricBuzz.util.IdGenerator;
 
 import java.util.Random;
 
@@ -12,12 +13,7 @@ public class Player extends Person {
     private BowlingScoreCard bowlingScoreCard;
 
     public Player() {
-        Random random = new Random();
-        int candidateId;
-        do {
-            candidateId = random.nextInt(100);
-        } while(CricBuzzApp.players.containsKey(candidateId));
-        this.id = candidateId;
+        this.id= IdGenerator.generateId(CricBuzzApp.players);
         this.battingScoreCard = new BattingScoreCard();
         this.bowlingScoreCard = new BowlingScoreCard();
     }

@@ -1,18 +1,28 @@
 package CricBuzz.entities;
 
+import CricBuzz.CricBuzzApp;
 import CricBuzz.interfaces.MatchType;
 import CricBuzz.factory.MatchTypeFactory;
+import CricBuzz.util.IdGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Match {
+    public int id;
     private Team teamA;
     private Team teamB;
     private List<Innings> innings = new ArrayList<>();
     private MatchType matchType;
     private int oversPerInning;
     private int ballsPerOver;
+
+    public void setTeamA(Team teamA){
+        this.teamA=teamA;
+    }
+    public void setTeamB(Team teamB){
+        this.teamB=teamB;
+    }
 
     // The match type is determined via the factory.
     public Match(Team teamA, Team teamB, int matchTypeChoice, int oversPerInning, int ballsPerOver) {
@@ -21,6 +31,7 @@ public class Match {
         this.matchType = MatchTypeFactory.getMatchType(matchTypeChoice);
         this.oversPerInning = oversPerInning;
         this.ballsPerOver = ballsPerOver;
+        this.id= IdGenerator.generateId(CricBuzzApp.matchs);
     }
 
     public void startMatch() {
