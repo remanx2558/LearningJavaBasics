@@ -1,18 +1,19 @@
 package CricBuzz;
 
+import CricBuzz.entities.Player;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class CricBuzzApp {
-    static Map<Integer, Player> players=new HashMap<>();
-    CricBuzzApp(){
+    // Global map of players for lookup (e.g. by id)
+    public static Map<Integer, Player> players = new HashMap<>();
+
+    public void addPlayer(Player player) {
+        players.put(player.getId(), player);
     }
 
-    public void addPlayer(Player player){
-        players.put(player.id,player);
-    }
-
-    static public Player getPlayer(int pid){
+    public static Player getPlayer(int pid) {
         return players.get(pid);
     }
 }

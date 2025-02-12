@@ -1,4 +1,4 @@
-package CricBuzz;
+package CricBuzz.interfaces;
 
 public interface MatchType {
     int numberOfOvers();

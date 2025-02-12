@@ -1,67 +1,54 @@
 package CricBuzz;
 
+import CricBuzz.entities.Match;
+import CricBuzz.entities.Player;
+import CricBuzz.entities.Team;
 import CricBuzz.util.Input;
 
-import java.util.Scanner;
-
 public class CricBuzzClient {
-    public static void main(String args[]){
-
-        // 1. first ask type of match from user : then user select the type of match which can be t20 or one day
-        System.out.print("Select Match Type (1. T20, 2. One Day): ");
+    public static void main(String[] args) {
+        // 1. Ask match type.
+        System.out.print("Select Match Type (1: T20, 2: One Day): ");
         int matchTypeChoice = Input.nextInt();
-        MatchType matchType = matchTypeChoice == 1 ? new T20MT() : new OneDayMT();
 
-        // 2. then ask number of overs in each inining like 1 , 2 ,3 , max 4
+        // 2. Ask overs and balls.
         System.out.print("Enter number of overs per innings (1-4): ");
         int overs = Input.nextInt();
-
-
-        // 2.2 then ask number of bolls in each over 1-6
-
         System.out.print("Enter number of balls per over (1-6): ");
         int ballsPerOver = Input.nextInt();
 
-        //3. then ask number of players each team can be 1,2, max 3 for now
+        // 3. Ask number of players per team.
         System.out.print("Enter number of players per team (1-3): ");
         int playersPerTeam = Input.nextInt();
 
-
-        //4. then ask to tell the name of the team 1
+        // 4. Create Team 1.
         System.out.print("Enter name of Team 1: ");
         String team1Name = Input.next();
         Team team1 = new Team();
-        team1.teamName = team1Name;
-        //5.then ask to enter the name of players of teams1
+        team1.setTeamName(team1Name);
         for (int i = 0; i < playersPerTeam; i++) {
             System.out.print("Enter name of Player " + (i + 1) + " for " + team1Name + ": ");
             Player p = new Player();
-            p.name = Input.next();
-            team1.p11.add(p);
+            p.setName(Input.next());
+            new CricBuzzApp().addPlayer(p);
+            team1.getPlayers().add(p);
         }
-        //6.then ask the name of team2
+
+        // 5. Create Team 2.
         System.out.print("Enter name of Team 2: ");
         String team2Name = Input.next();
         Team team2 = new Team();
-        team2.teamName = team2Name;
-        //7. then ask to enter the name of players of team2
+        team2.setTeamName(team2Name);
         for (int i = 0; i < playersPerTeam; i++) {
             System.out.print("Enter name of Player " + (i + 1) + " for " + team2Name + ": ");
             Player p = new Player();
-            p.name = Input.next();
-            team2.p11.add(p);
+            p.setName(Input.next());
+            new CricBuzzApp().addPlayer(p);
+            team2.getPlayers().add(p);
         }
-        //8. start the match....
-        Match match = new Match();
-        match.a = team1;
-        match.b = team2;
-        match.type = matchType;
-        match.oversPerInning = overs;
-        match.ballsPerOver = ballsPerOver;
-        //collect the toss : based on this decide team a and b : secondary requirement
+
+        // 6. Create and start the match.
+        Match match = new Match(team1, team2, matchTypeChoice, overs, ballsPerOver);
         match.startMatch();
-
-
-
     }
 }

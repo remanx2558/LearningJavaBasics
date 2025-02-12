@@ -1,5 +1,7 @@
 package CricBuzz.util;
 
+import CricBuzz.singleton.ScannerSingleton;
+
 import java.util.Scanner;
 
 public final class Input {

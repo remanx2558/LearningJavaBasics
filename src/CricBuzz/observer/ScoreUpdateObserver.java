@@ -1,5 +1,8 @@
 package CricBuzz.observer;
 
-interface ScoreUpdateObserver {
-    void update();
+import CricBuzz.entities.Ball;
+import CricBuzz.entities.Player;
+
+public interface ScoreUpdateObserver {
+    void update(Player player, Ball ball);
 }

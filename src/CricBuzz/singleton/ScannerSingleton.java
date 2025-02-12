@@ -1,4 +1,4 @@
-package CricBuzz.util;
+package CricBuzz.singleton;
 
 import java.util.Scanner;
 

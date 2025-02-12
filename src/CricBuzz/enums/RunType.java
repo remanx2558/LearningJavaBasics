@@ -1,13 +1,24 @@
-package CricBuzz;
+package CricBuzz.enums;
 
 public enum RunType {
-    NORUN,
-    ONE,       // 1
-    TWO,       // 2
-    THREE,     // 3
-    FOUR,      // 4
-    SIX,       // 6
-    WIDERUN;   // used when the ball is a WIDEBALL, etc.
+    NORUN(0),
+    ONE(1),       // 1
+    TWO(2),       // 2
+    THREE(3),     // 3
+    FOUR(4),      // 4
+    FIVE(5),
+    SIX(6),       // 6
+    WIDERUN(1);   // used when the ball is a WIDEBALL, etc.
+
+    int run;
+
+    RunType(int run){
+        this.run=run;
+    }
+
+    int getRun(){
+        return run;
+    }
 
     public static RunType fromInt(int runs) {
         switch (runs) {
@@ -19,6 +30,8 @@ public enum RunType {
                 return THREE;
             case 4:
                 return FOUR;
+            case 5:
+                return FIVE;
             case 6:
                 return SIX;
             default:

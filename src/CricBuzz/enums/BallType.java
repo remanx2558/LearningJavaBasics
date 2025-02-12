@@ -1,4 +1,4 @@
-package CricBuzz;
+package CricBuzz.enums;
 
 public enum BallType {
     OUT,
@@ -15,7 +15,6 @@ public enum BallType {
             case 2:
                 return WIDEBALL;
             default:
-                // Return null or throw an exception if input is invalid
                 return OUT;
         }
     }
