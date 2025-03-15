@@ -16,7 +16,7 @@ public enum RunType {
         this.run=run;
     }
 
-    int getRun(){
+    public int getRun(){
         return run;
     }
 
