@@ -2,6 +2,7 @@ package AmazonEcommerce;
 
 import AmazonEcommerce.Stategies.PaymentStrategy;
 import AmazonEcommerce.enums.OrderStatus;
+import AmazonEcommerce.enums.PaymentStatus;
 import AmazonEcommerce.observer.NotificationService;
 import AmazonEcommerce.util.IdGenerator;
 
@@ -16,7 +17,7 @@ public class Order {
     private OrderStatus status;
     private Date orderDate;
     private Date shipmentDate;
-    private boolean isPaymentDone;
+    private PaymentStatus paymentStatus;
     private Date expectedDeliveryDate;
     private Address deliveryAddress;
     private int price;
@@ -37,13 +38,13 @@ public class Order {
         orderItems=customer.viewCart().getItems();
         status=OrderStatus.PLACED;
         //payment
-        isPaymentDone=makePayment(paymentStrategy);
+        paymentStatus=makePayment(paymentStrategy);
         //notification
         NotificationService.notify(customer, "Order placed: " + id);
     }
     //make Payment
-    public boolean makePayment(PaymentStrategy paymentStrategy){
-        if(paymentStrategy==null){return false;}
+    public PaymentStatus makePayment(PaymentStrategy paymentStrategy){
+        if(paymentStrategy==null){return PaymentStatus.PENDING;}
         return paymentStrategy.pay(customer,merchant, price);
     }
 
@@ -75,17 +76,11 @@ public class Order {
         }
     }
 
-    public Merchant getMerchant() {
-        return merchant;
-    }
+    public Merchant getMerchant() {return merchant;}
 
-    public int getPrice() {
-        return price;
-    }
+    public int getPrice() { return price;}
 
-    public void setStatus(OrderStatus status) {
-        this.status = status;
-    }
+    public void setStatus(OrderStatus status) {this.status = status;}
 
     //check is Order Cancelleable
     private boolean isCancellable(){
@@ -93,9 +88,6 @@ public class Order {
         return true;
     }
 
-    public OrderStatus getStatus() {
-        return status;
-    }
-
+    public OrderStatus getStatus() {return status;}
     public Customer getCustomer(){return customer;}
 }

@@ -1,7 +1,8 @@
 package AmazonEcommerce.Stategies;
 
 import AmazonEcommerce.UserAccount;
+import AmazonEcommerce.enums.PaymentStatus;
 
 public interface PaymentStrategy {
-    public boolean pay(UserAccount sender, UserAccount receiver, int amount);
+    public PaymentStatus pay(UserAccount sender, UserAccount receiver, int amount);
 }

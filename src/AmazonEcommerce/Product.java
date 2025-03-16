@@ -13,6 +13,14 @@ public class Product {
     private ProductCategory productCategory;
     private List<Review> reviews=new ArrayList<>();
     private int mrp;
+    private int quantity;
+
+    public Product( ProductCategory category, int price, int quantity) {
+        id = IdGenerator.generateId();
+        this.productCategory = category;
+        mrp = price;
+        this.quantity = quantity;
+    }
 
     public void setProductCategory(ProductCategory productCategory) {
         this.productCategory = productCategory;
@@ -24,15 +32,6 @@ public class Product {
 
     public void setMrp(int mrp) {
         this.mrp = mrp;
-    }
-
-    private int quantity;
-
-    public Product( ProductCategory category, int price, int quantity) {
-        id = IdGenerator.generateId();
-        this.productCategory = category;
-        mrp = price;
-        this.quantity = quantity;
     }
 
     public int getMrp() {
@@ -59,6 +58,15 @@ public class Product {
     public ProductCategory getProductCategory() {
         return productCategory;
     }
+    public List<Review> getReviews(){return reviews;}
+
+    public String getId(){return id;}
+
+    public int getQuantity(){return quantity;}
+
+    public void setQuantity(int qt){
+        quantity=qt;
+    }
 
     //Equals and HashCode
     @Override
@@ -73,16 +81,5 @@ public class Product {
     public int hashCode() {
         return Objects.hash(id);
     }
-
-    public List<Review> getReviews(){return reviews;}
-
-    public String getId(){return id;}
-
-    public int getQuantity(){return quantity;}
-
-    public void setQuantity(int qt){
-        quantity=qt;
-    }
-
 
 }

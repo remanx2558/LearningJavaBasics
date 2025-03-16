@@ -2,6 +2,7 @@ package AmazonEcommerce;
 
 import AmazonEcommerce.Stategies.PaymentStrategy;
 import AmazonEcommerce.enums.OrderStatus;
+import AmazonEcommerce.enums.PaymentStatus;
 import AmazonEcommerce.enums.ProductCategory;
 import AmazonEcommerce.singleton.ECommerceSystem;
 
@@ -39,7 +40,7 @@ public class Admin extends UserAccount {
     //refund Order
     public boolean refundPayment(Order order, PaymentStrategy paymentStrategy){
         if(paymentStrategy==null){return false;}
-        if(!paymentStrategy.pay(order.getCustomer(),order.getMerchant(), order.getPrice())){return false;}
+        if(paymentStrategy.pay(order.getCustomer(),order.getMerchant(), order.getPrice())== PaymentStatus.FAILED){return false;}
         order.setStatus(OrderStatus.REFUNDED);
         return true;
 

@@ -5,6 +5,15 @@ import AmazonEcommerce.util.IdGenerator;
 public class Item {
     String id;
     public Product product;
+    boolean isAvailable=true;
+
+    public boolean isAvailable() {
+        return isAvailable;
+    }
+
+    public void setAvailable(boolean available) {
+        isAvailable = available;
+    }
 
     public void setProduct(Product product) {
         this.product = product;

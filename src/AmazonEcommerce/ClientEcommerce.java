@@ -3,6 +3,9 @@ package AmazonEcommerce;
 import AmazonEcommerce.Stategies.CardPayment;
 import AmazonEcommerce.Stategies.PaymentStrategy;
 import AmazonEcommerce.Stategies.SearchItemOnProductCategory;
+import AmazonEcommerce.decorator.BlackFridayDiscount;
+import AmazonEcommerce.decorator.ChristmanDiscount;
+import AmazonEcommerce.decorator.DiscountDecorator;
 import AmazonEcommerce.enums.ProductCategory;
 import AmazonEcommerce.singleton.ECommerceSystem;
 
@@ -34,7 +37,11 @@ public class ClientEcommerce {
         Item novelItem = new Item(novel,500,merchant);
 
         customer.addItemToCart(novelItem);
-        PaymentStrategy paymentStrategy = new CardPayment();
+        PaymentStrategy paymentStrategy = new CardPayment("1267");
+        paymentStrategy = new DiscountDecorator(paymentStrategy);
+        paymentStrategy = new BlackFridayDiscount(paymentStrategy);
+        paymentStrategy = new ChristmanDiscount(paymentStrategy);
+
         Order order = customer.placeOrder(paymentStrategy);
         order.getStatus();
         customer.cancelOrder(order);

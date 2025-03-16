@@ -75,13 +75,9 @@ public class UserAccount {
     }
 
     //Observer Pattern
-    public void receiveNotification(String message) {
-        System.out.println("Notification to: " + name + " - " + message);
-    }
+    public void receiveNotification(String message) {System.out.println("Notification to: " + name + " - " + message);}
 
-    public Address getAddress(){
-        return address;
-    }
+    public Address getAddress(){return address;}
 
 
 
