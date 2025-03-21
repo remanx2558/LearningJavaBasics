@@ -1,0 +1,50 @@
+
+Step0: Understanding of System for Requirement:
+
+
+vehicle comes enter gates , gate person generates the ticket
+vehicle driver parks the vehicle
+when returning person pics the vehicle
+
+
+
+
+
+Step 1: Requirements collection/Gathering:
+
+1. Should allow Allow different types of vehicles (car, truck, van, Motorcycle)to enter and leave
+2. DONE: Different pay rates for different vehicles
+2.1:  Different vehicle parking price is calculated differently.
+2..2: The customer can pay for the ticket either with an automated exit panel or pay the parking agent at the exit.
+3. DONE: while entering should generate ticket and while leaving should pay for ticket
+4. DONE: while leaving payment should be done with various methords like cash, upi, card.
+5. can have multiple floors.
+6. can have multiple entry and expit gates
+7. i can enter from any gate available .
+7.1: i can exit from assigned gates only based on various stategies
+8. There should be multiple types of vehicle parking spot like handicapped, compact, large, and motorcycle.
+9. If the parking lot is completely occupied, the system should show a message on the entrance and on the parking lot display board.
+9.1:  The system should not allow more vehicles in the parking lot if the maximum capacity (40,000) is reached.
+10. The parking lot should have a display board that shows free parking spots for each parking spot type.
+11. parking lot should have capacity to park 40,000 vehicles.
+
+
+
+Step 2: Use Case Diagram
+Actors: Driver, System, Admin, Gate Keepers
+
+Driver: Make Payment, Enter the gate, Exit the Gate, Collect ticket, Park/unPark the car.
+System: Generate the amount to be paid
+Gate Keeper: Handover tickets, Open/Close Gates,
+Admin: Add/Remove gates, Add/remove floors, change rates,
+
+
+
+
+Step2: Entity Involved
+
+
+Step3: Class Diagram
+
+
+Step4: Actual Code
