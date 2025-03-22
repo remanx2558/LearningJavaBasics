@@ -1,0 +1,127 @@
+<mxfile host="drawio-plugin" modified="2025-03-16T20:30:46.238Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" version="22.1.22" etag="kP3Lifm0M3sqHimKc4pO" type="embed">
+  <diagram id="EcommerceClassDiagram" name="EcommerceClassDiagram">
+    <mxGraphModel dx="2042" dy="1390" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="800" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="UA" value="&lt;style&gt;whiteSpace=wrap;html=1;&lt;/style&gt;&lt;umlClass&gt;&lt;umlClassifierType&gt;class&lt;/umlClassifierType&gt;&lt;umlClassifierName&gt;UserAccount&lt;/umlClassifierName&gt; ---------------------- - id : String - password : String - name : String - isBlocked : boolean - session : Session ---------------------- + logIn(int, String) : void + logOut() : void + isValidSession() : boolean&lt;/umlClass&gt;" style="shape=umlClass;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="90" y="40" width="200" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="ADM" value="&lt;style&gt;whiteSpace=wrap;html=1;&lt;/style&gt;&lt;umlClass&gt;&lt;umlClassifierType&gt;class&lt;/umlClassifierType&gt;&lt;umlClassifierName&gt;Admin&lt;/umlClassifierName&gt; ---------------------- + blockAccount(account : UserAccount) : void + unBlockAccount(account : UserAccount) : void + deleteAccount(account : UserAccount) : void ---------------------- + addProduct(product : Product) : void + removeProduct(product : Product) : void + addProductCategory(pc : ProductCategory) : void + removeProductCategory(pc : ProductCategory) : void&lt;/umlClass&gt;" style="shape=umlClass;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="-350" y="20" width="250" height="260" as="geometry" />
+        </mxCell>
+        <mxCell id="CUST" value="&lt;style&gt;whiteSpace=wrap;html=1;&lt;/style&gt;&lt;umlClass&gt;&lt;umlClassifierType&gt;class&lt;/umlClassifierType&gt;&lt;umlClassifierName&gt;Customer&lt;/umlClassifierName&gt; ---------------------- - cart : Cart - orders : List&lt;Order&gt; - wishList : WishList ---------------------- + addItemToCart(item : Item) : void + removeItemFromCart(item : Item) : void + addToWishList(product : Product) : void + moveFromWishListToCart(product : Product, merchant : Merchant) : void + placeOrder(strategy : PaymentStrategy) : Order + cancelOrder(order : Order) : boolean&lt;/umlClass&gt;" style="shape=umlClass;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="90" y="560" width="280" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="MERC" value="&lt;style&gt;whiteSpace=wrap;html=1;&lt;/style&gt;&lt;umlClass&gt;&lt;umlClassifierType&gt;class&lt;/umlClassifierType&gt;&lt;umlClassifierName&gt;Merchant&lt;/umlClassifierName&gt; ---------------------- - stores : List&lt;Store&gt; ---------------------- + addStore() : void + removeStore(store : Store) : void + addProduct(store : Store, product : Product) : void + removeProduct(store : Store, product : Product) : void ---------------------- + addProduct(product : Product) : void&lt;/umlClass&gt;" style="shape=umlClass;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="430" y="40" width="280" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="GST" value="&lt;style&gt;whiteSpace=wrap;html=1;&lt;/style&gt;&lt;umlClass&gt;&lt;umlClassifierType&gt;class&lt;/umlClassifierType&gt;&lt;umlClassifierName&gt;Guest&lt;/umlClassifierName&gt; ---------------------- + searchProduct(strategy : SearchStrategy, product : Product) : List&lt;Item&gt; + crateAccount(name : String, password : String) : void&lt;/umlClass&gt;" style="shape=umlClass;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="430" y="310" width="280" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="PS" value="&lt;style&gt;whiteSpace=wrap;html=1;&lt;/style&gt;&lt;umlClass&gt;&lt;umlClassifierType&gt;interface&lt;/umlClassifierType&gt;&lt;umlClassifierName&gt;PaymentStrategy&lt;/umlClassifierName&gt; ---------------------- + pay(sender : UserAccount, receiver : UserAccount, amount : int) : boolean&lt;/umlClass&gt;" style="shape=umlClass;whiteSpace=wrap;html=1;strokeDasharray=6 3;" parent="1" vertex="1">
+          <mxGeometry x="850" y="-630" width="240" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="PSD" value="&lt;style&gt;whiteSpace=wrap;html=1;&lt;/style&gt;&lt;umlClass&gt;&lt;umlClassifierType&gt;abstract&lt;/umlClassifierType&gt;&lt;umlClassifierName&gt;PaymentStrategyDecorator&lt;/umlClassifierName&gt; ---------------------- - wrappedPaymentStrategy : PaymentStrategy ---------------------- + pay(...) : boolean&lt;/umlClass&gt;" style="shape=umlClass;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="890" y="-190" width="270" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="DD" value="&lt;style&gt;whiteSpace=wrap;html=1;&lt;/style&gt;&lt;umlClass&gt;&lt;umlClassifierType&gt;class&lt;/umlClassifierType&gt;&lt;umlClassifierName&gt;DiscountDecorator&lt;/umlClassifierName&gt; ---------------------- + pay(sender, receiver, amount) : boolean&lt;/umlClass&gt;" style="shape=umlClass;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="920" y="60" width="180" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="CP" value="&lt;style&gt;whiteSpace=wrap;html=1;&lt;/style&gt;&lt;umlClass&gt;&lt;umlClassifierType&gt;class&lt;/umlClassifierType&gt;&lt;umlClassifierName&gt;CardPayment&lt;/umlClassifierName&gt; ---------------------- + pay(sender, receiver, amount) : boolean&lt;/umlClass&gt;" style="shape=umlClass;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="730" y="-390" width="180" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="COD" value="&lt;style&gt;whiteSpace=wrap;html=1;&lt;/style&gt;&lt;umlClass&gt;&lt;umlClassifierType&gt;class&lt;/umlClassifierType&gt;&lt;umlClassifierName&gt;CashOnDeliveryPayment&lt;/umlClassifierName&gt; ---------------------- + pay(sender, receiver, amount) : boolean&lt;/umlClass&gt;" style="shape=umlClass;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="1090" y="-420" width="210" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="PRD" value="&lt;style&gt;whiteSpace=wrap;html=1;&lt;/style&gt;&lt;umlClass&gt;&lt;umlClassifierType&gt;class&lt;/umlClassifierType&gt;&lt;umlClassifierName&gt;Product&lt;/umlClassifierName&gt; ---------------------- - id : String - productCategory : ProductCategory - quantity : int - mrp : int - reviews : List&lt;Review&gt; ---------------------- + addReview(review : Review) : void + removeReview(account : UserAccount) : void + getReviews() : List&lt;Review&gt;&lt;/umlClass&gt;" style="shape=umlClass;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="1590" y="150" width="220" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="ITM" value="&lt;style&gt;whiteSpace=wrap;html=1;&lt;/style&gt;&lt;umlClass&gt;&lt;umlClassifierType&gt;class&lt;/umlClassifierType&gt;&lt;umlClassifierName&gt;Item&lt;/umlClassifierName&gt; ---------------------- - product : Product - merchant : Merchant - price : int ---------------------- + setProduct(p : Product) : void + setPrice(p : int) : void&lt;/umlClass&gt;" style="shape=umlClass;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="1250" y="170" width="220" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="ORD" value="&lt;style&gt;whiteSpace=wrap;html=1;&lt;/style&gt;&lt;umlClass&gt;&lt;umlClassifierType&gt;class&lt;/umlClassifierType&gt;&lt;umlClassifierName&gt;Order&lt;/umlClassifierName&gt; ---------------------- - orderItems : List&lt;Item&gt; - customer : Customer - merchant : Merchant - status : OrderStatus ---------------------- + makePayment(strategy : PaymentStrategy) : boolean + cancelOrder() : boolean + shipOrder() : void + deliverOrder() : void&lt;/umlClass&gt;" style="shape=umlClass;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="1035" y="410" width="240" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="CRT" value="&lt;style&gt;whiteSpace=wrap;html=1;&lt;/style&gt;&lt;umlClass&gt;&lt;umlClassifierType&gt;class&lt;/umlClassifierType&gt;&lt;umlClassifierName&gt;Cart&lt;/umlClassifierName&gt; ---------------------- - items : List&lt;Item&gt; ---------------------- + addItem(item : Item) : void + removeItem(item : Item) : void + getTotalPrice() : int&lt;/umlClass&gt;" style="shape=umlClass;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="1400" y="620" width="200" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="WIS" value="&lt;style&gt;whiteSpace=wrap;html=1;&lt;/style&gt;&lt;umlClass&gt;&lt;umlClassifierType&gt;class&lt;/umlClassifierType&gt;&lt;umlClassifierName&gt;WishList&lt;/umlClassifierName&gt; ---------------------- - products : List&lt;Product&gt; ---------------------- + addProduct(product : Product) : void + removeProduct(product : Product) : void + moveToCart(product : Product, cart : Cart, m : Merchant) : void&lt;/umlClass&gt;" style="shape=umlClass;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="1730" y="820" width="240" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="CTS" value="&lt;style&gt;whiteSpace=wrap;html=1;&lt;/style&gt;&lt;umlClass&gt;&lt;umlClassifierType&gt;class&lt;/umlClassifierType&gt;&lt;umlClassifierName&gt;CatalogService (static)&lt;/umlClassifierName&gt; ---------------------- - products : List&lt;Product&gt; - productCategories : List&lt;ProductCategory&gt; ---------------------- + addProduct(p : Product) : void + removeProduct(p : Product) : void + addProductCategory(pc : ProductCategory) : void + removeProductCategory(pc : ProductCategory) : void&lt;/umlClass&gt;" style="shape=umlClass;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="80" y="870" width="260" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="STR" value="&lt;style&gt;whiteSpace=wrap;html=1;&lt;/style&gt;&lt;umlClass&gt;&lt;umlClassifierType&gt;class&lt;/umlClassifierType&gt;&lt;umlClassifierName&gt;Store&lt;/umlClassifierName&gt; ---------------------- - id : int - productList : List&lt;Product&gt; ---------------------- + addProduct(product : Product) : void + removeProduct(product : Product) : void&lt;/umlClass&gt;" style="shape=umlClass;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="380" y="870" width="230" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="ECS" value="&lt;style&gt;whiteSpace=wrap;html=1;&lt;/style&gt;&lt;umlClass&gt;&lt;umlClassifierType&gt;class&lt;/umlClassifierType&gt;&lt;umlClassifierName&gt;ECommerceSystem (singleton)&lt;/umlClassifierName&gt; ---------------------- - accounts : List&lt;UserAccount&gt; ---------------------- + getInstance() : ECommerceSystem + addAccount(account : UserAccount) : void + deleteAccount(account : UserAccount) : void&lt;/umlClass&gt;" style="shape=umlClass;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="700" y="870" width="300" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="SES" value="&lt;style&gt;whiteSpace=wrap;html=1;&lt;/style&gt;&lt;umlClass&gt;&lt;umlClassifierType&gt;class&lt;/umlClassifierType&gt;&lt;umlClassifierName&gt;Session&lt;/umlClassifierName&gt; ---------------------- - token : String - isActive : boolean - timeToLive : LocalDateTime&lt;/umlClass&gt;" style="shape=umlClass;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="1140" y="895" width="210" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="REV" value="&lt;style&gt;whiteSpace=wrap;html=1;&lt;/style&gt;&lt;umlClass&gt;&lt;umlClassifierType&gt;class&lt;/umlClassifierType&gt;&lt;umlClassifierName&gt;Review&lt;/umlClassifierName&gt; ---------------------- - reviewContent : String - reviewer : UserAccount ---------------------- + getReviewer() : UserAccount&lt;/umlClass&gt;" style="shape=umlClass;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="1850" y="65" width="220" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="edgeAdm" value="" style="endArrow=block;html=1;strokeWidth=1;" parent="1" source="ADM" target="UA" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edgeCust" value="" style="endArrow=block;html=1;strokeWidth=1;" parent="1" source="CUST" target="UA" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edgeMerc" value="" style="endArrow=block;html=1;strokeWidth=1;" parent="1" source="MERC" target="UA" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edgeGuest" value="" style="endArrow=block;html=1;strokeWidth=1;" parent="1" source="GST" target="UA" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edgePSD" value="&lt;&lt;implements&gt;&gt;" style="endArrow=block;dashed=1;html=1;fontColor=#000000;strokeWidth=1;" parent="1" source="PSD" target="PS" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edgeDD" value="" style="endArrow=block;html=1;strokeWidth=1;" parent="1" source="DD" target="PSD" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edgeCP" value="&lt;&lt;implements&gt;&gt;" style="endArrow=block;dashed=1;html=1;fontColor=#000000;strokeWidth=1;" parent="1" source="CP" target="PS" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edgeCOD" value="&lt;&lt;implements&gt;&gt;" style="endArrow=block;dashed=1;html=1;fontColor=#000000;strokeWidth=1;" parent="1" source="COD" target="PS" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edgeCartItem" value="contains" style="endArrow=classic;html=1;strokeWidth=1;" parent="1" source="CRT" target="ITM" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edgeWishList" value="holds" style="endArrow=classic;html=1;strokeWidth=1;" parent="1" source="WIS" target="PRD" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edgeItemProd" value="ref" style="endArrow=open;html=1;strokeWidth=1;" parent="1" source="ITM" target="PRD" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edgeItemMerc" value="ref" style="endArrow=open;html=1;strokeWidth=1;" parent="1" source="ITM" target="MERC" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edgeOrderCust" value="belongsTo" style="endArrow=open;html=1;strokeWidth=1;" parent="1" source="ORD" target="CUST" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edgeOrderItem" value="has many" style="endArrow=open;html=1;strokeWidth=1;" parent="1" source="ORD" target="ITM" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edgeOrderMerc" value="merchant" style="endArrow=open;html=1;strokeWidth=1;" parent="1" source="ORD" target="MERC" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edgeCustCart" value="has" style="endArrow=open;html=1;strokeWidth=1;" parent="1" source="CUST" target="CRT" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edgeCustWishList" value="has" style="endArrow=open;html=1;strokeWidth=1;" parent="1" source="CUST" target="WIS" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edgeCustOrder" value="places" style="endArrow=open;html=1;strokeWidth=1;" parent="1" source="CUST" target="ORD" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edgeProdReview" value="has many" style="endArrow=open;html=1;strokeWidth=1;" parent="1" source="PRD" target="REV" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
