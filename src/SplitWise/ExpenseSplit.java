@@ -1,4 +1,8 @@
 package SplitWise;
 
-public class ExpenseSplit {
+import java.util.List;
+
+public interface ExpenseSplit {
+
+    public boolean validate(List<Split> splitList, double amount);
 }
