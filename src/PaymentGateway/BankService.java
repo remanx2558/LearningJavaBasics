@@ -26,7 +26,7 @@ public class BankService extends InstrumentService{
 
         BankInstrument bankInstrument=new BankInstrument(instrumentDO.getInstrumentId(),instrumentDO.getUserId());
         bankInstrument.setBankAccountNumber(instrumentDO.getBankAccountNumber());
-        bankInstrument.setIfsc(instrumentDO.getInstrumentId());
+        bankInstrument.setIfsc(instrumentDO.getIfscNumber());
         userInstruments.get(userId).add(bankInstrument);
     }
     //get Instrument
