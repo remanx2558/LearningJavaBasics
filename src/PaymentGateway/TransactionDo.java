@@ -1,13 +1,12 @@
 package PaymentGateway;
 
-public class Transaction {
-    String txnId;
+public class TransactionDo {
     String senderUserId;
     String receiverUserId;
     String senderInstrumentId;
     String receiverInstrumentId;
     double amount;
-
+    InstrumentType instrumentType;
     public InstrumentType getInstrumentType() {
         return instrumentType;
     }
@@ -16,16 +15,6 @@ public class Transaction {
         this.instrumentType = instrumentType;
     }
 
-    TransactionStatus status;
-    InstrumentType instrumentType;
-
-    public String getTxnId() {
-        return txnId;
-    }
-
-    public void setTxnId(String txnId) {
-        this.txnId = txnId;
-    }
 
     public String getSenderUserId() {
         return senderUserId;
@@ -65,13 +54,5 @@ public class Transaction {
 
     public void setAmount(double amount) {
         this.amount = amount;
-    }
-
-    public TransactionStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(TransactionStatus status) {
-        this.status = status;
     }
 }

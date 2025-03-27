@@ -15,8 +15,11 @@ public class TransactionService {
         instrumentController=new InstrumentController();
     }
 
-    void makePayment(Transaction tranactionDO){
+    void makePayment(TransactionDo tranactionDO){
+        Instrument instrument=instrumentController.getInstrument(tranactionDO.getInstrumentType(),tranactionDO.getSenderUserId(),tranactionDO.getSenderInstrumentId());
         processor.processPayment(tranactionDO);
     }
-    void getTxnHistroy(UserDo userDO){}
+    List<Transaction> getTxnHistroy(User user){
+       return transactionMap.get(user);
+    }
 }
