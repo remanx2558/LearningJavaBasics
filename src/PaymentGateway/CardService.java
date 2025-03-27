@@ -1,6 +1,6 @@
 package PaymentGateway;
 
-public class CardService {
+public class CardService extends InstrumentService{
 
     static CardService instance;
 
