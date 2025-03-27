@@ -10,8 +10,9 @@ public class UserService {
         userList = new ArrayList<>();
     }
 
-    void addUser(User user) {
-        userList.add(user);
+    void addUser(UserDo user) {
+        User user1=new User(user.getId(), user.getName(),user.getEmail());
+        userList.add(user1);
     }
 
     User getUser(String userId) {

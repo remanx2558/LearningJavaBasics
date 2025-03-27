@@ -2,7 +2,11 @@ package PaymentGateway;
 
 public class Processor {
 
-    void processPayment(TransactionDO transactionDO){
+    void processPayment(Transaction transaction){
         //some bussiness logic
+
+
+
+        transaction.se
     }
 }
