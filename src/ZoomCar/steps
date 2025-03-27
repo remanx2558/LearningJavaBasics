@@ -1,0 +1,32 @@
+
+
+
+In interviews keep the design as simple as possible
+
+
+Requirements:-
+
+1. customer search vehicle location wise either car or bike
+2. customer search vehicle store wise either car or bike.
+3. Apply filers on vehicle search like Company, engine CC, electic or petrol,etc.
+4. make it scalable
+5. Reserve an vehicle for an period of time before checking its available or not , if available throw custom exception and log it. else if availble reserve it.
+6. generate an bill/invoice related to an reservation which can be paid now or later
+7. Make payment related to reservation , what ever amount mentioned in bill related to that bill.
+8. user submit back the vehicle at drop location
+9. store owner can add/ remove / modify vehicles like cars, bikes, etc.
+10. Customer can reserve vehicle and unreserve it before an period of time.
+11. user can come to pick the vehicle and come to drop the vehicle after using it.
+12. an vehicle can be available or unavailbe to be reserved on an selected time frame, or just broken or being reserved by someone else.
+13. User can drop early his reserved vehicle paying the full amount
+14. there can be various ways to pay like cash, upi, card.
+15. Bill amount can depend on various conditions like KMs vehicle travels, hours it gonna be used, or hybrid but this is selected at the time of reservation by the user.
+16. an owner can have multiple stores at various locations.
+17. notify customer, owner about reservation and pickup of vehicle and drop of vehicle
+
+
+
+
+
+8. Some of the objects can be: User, customer, owner, store, location, vehicle, reserve, bill, payment
+7.
