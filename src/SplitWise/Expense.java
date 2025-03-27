@@ -16,6 +16,26 @@ public class Expense {
         this.id="Some logic to genrate id";
     }
 
+    Expense(String name, double totalAmount,String description,User paidBy,SplitType splitType,List<Split> splits ){
+        this.id=name;
+        this.description=description;
+        this.totalAmount=totalAmount;
+        this.receivedBy=splits;
+        this.paidBy=paidBy;
+        this.splitType=splitType;
+
+
+    }
+
+    Expense(double totalAmount, List<Split> splits, User paidBy, SplitType type){
+        this.id="Some logic to genrate id";
+        this.totalAmount=totalAmount;
+        this.receivedBy=splits;
+        this.paidBy=paidBy;
+        this.splitType=type;
+
+    }
+
     public String getId() {
         return id;
     }

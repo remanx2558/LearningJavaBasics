@@ -1,24 +1,22 @@
 package SplitWise;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class UserExpenseBalanceSheet {
-    private final String id;
     private Map<User, Balance> friendBalance;
     private double amountOweTotal;
     private double amountGetBackTotal;
 
+    UserExpenseBalanceSheet(){
+        friendBalance=new HashMap<>();
+        amountGetBackTotal=0;
+        amountOweTotal=0;
+    }
+
 
     //Getter and Setters
 
-
-    public UserExpenseBalanceSheet() {
-        this.id = "Some logic to generate id";
-    }
-
-    public String getId() {
-        return id;
-    }
 
     public Map<User, Balance> getFriendBalance() {
         return friendBalance;

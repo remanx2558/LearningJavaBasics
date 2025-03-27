@@ -1,7 +1,6 @@
 package SplitWise;
 
 public class Split {
-    private final String id;
 
     // Bussiness Parameters
     private SplitType splitType;
@@ -10,13 +9,11 @@ public class Split {
     private double percentage;
 
     //Getter setter Constructors
-    Split(){
-        this.id="Some logic to generate id";
+    Split(User user, double owedAmount){
+        this.user=user;
+        this.owedAmount=owedAmount;
     }
 
-    public String getId() {
-        return id;
-    }
 
 
     public SplitType getSplitType() {

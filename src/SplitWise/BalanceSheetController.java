@@ -8,6 +8,10 @@ public class BalanceSheetController {
     List<UserExpenseBalanceSheet> balanceSheetList;
     static private BalanceSheetController instance;
 
+    //
+    void showBalanceSheetOfUser(User user){
+        System.out.println(user.getUserExpenseBalanceSheet().toString());
+    }
 
     //add remove update
 

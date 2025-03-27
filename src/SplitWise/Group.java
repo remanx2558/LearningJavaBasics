@@ -18,7 +18,9 @@ public class Group {
     Group(String name){
         expenseController=ExpenseController.getInstance();
         users=new ArrayList<>();
+        expenses=new ArrayList<>();
         this.name=name;
+        this.id=name;
     }
     //add remove members
     void addMember(User user){
@@ -102,4 +104,54 @@ public class Group {
 
     }
 
+    //setters and getters
+
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
+
+    public List<Expense> getExpenses() {
+        return expenses;
+    }
+
+    public void setExpenses(List<Expense> expenses) {
+        this.expenses = expenses;
+    }
+
+    public ExpenseController getExpenseController() {
+        return expenseController;
+    }
+
+    public void setExpenseController(ExpenseController expenseController) {
+        this.expenseController = expenseController;
+    }
 }

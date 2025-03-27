@@ -8,10 +8,12 @@ public class ExpenseController {
     BalanceSheetController bsController;
     List<Expense> expenseList;
     static private ExpenseController instance;
+    private SplitFactory factory;
 
     ExpenseController(){
         expenseList=new ArrayList<>();
         bsController=BalanceSheetController.getInstance();
+        factory=new SplitFactory();
     }
 
     static public ExpenseController getInstance(){
@@ -26,6 +28,13 @@ public class ExpenseController {
     }
 
     //amount , users , split type, expensesplit
+
+    void createExpense(double amount, List<Split>splits, User paidBy, SplitType type){
+        ExpenseSplit expenseSplit=factory.getExpenseSplit(type);
+        if(expenseSplit.validate(splits,amount)){
+            Expense expense=new Expense( amount, splits, paidBy,type);
+        }
+    }
 
 
 
