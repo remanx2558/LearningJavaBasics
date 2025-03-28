@@ -4,15 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserService {
-    List<User> userList;
+    private List<User> userList;
 
     UserService() {
         userList = new ArrayList<>();
     }
 
-    void addUser(UserDo user) {
-        User user1=new User(user.getId(), user.getName(),user.getEmail());
+    UserDo addUser(UserDo user) {
+        User user1=new User(user.getName(),user.getEmail());
         userList.add(user1);
+        user.setId(user1.id);
+        return user;
     }
 
     User getUser(String userId) {

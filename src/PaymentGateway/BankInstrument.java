@@ -3,8 +3,8 @@ package PaymentGateway;
 public class BankInstrument extends Instrument{
     String bankAccountNumber;
     String ifsc;
-    BankInstrument(String instrumentId,String userId ){
-        super(instrumentId,userId);
+    BankInstrument(String userId ){
+        super(userId);
     }
 
 

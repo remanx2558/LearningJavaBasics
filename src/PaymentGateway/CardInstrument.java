@@ -5,8 +5,8 @@ public class CardInstrument extends Instrument{
     String cardNumber;
     String cvvNumber;
 
-    CardInstrument(String instrumentId,String userId ){
-        super(instrumentId,userId);
+    CardInstrument(String userId ){
+        super(userId);
     }
 
 

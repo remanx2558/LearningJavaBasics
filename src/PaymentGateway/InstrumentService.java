@@ -8,7 +8,7 @@ public abstract class InstrumentService {
     Map<String, List<Instrument>> userInstruments;
 
     //add instrument
-    abstract void addInstrument(String userId, InstrumentDO instrumentDO);
+    abstract InstrumentDO addInstrument(InstrumentDO instrumentDO);
 
     abstract Instrument getInstrument(String userId, String instrumentId);
 

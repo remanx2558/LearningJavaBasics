@@ -1,5 +1,7 @@
 package PaymentGateway;
 
+import Common.util.IdGenerator;
+
 public abstract class Instrument {
     String instrumentId;
     String userId;
@@ -7,8 +9,8 @@ public abstract class Instrument {
 
     //getter and setter
 
-    public Instrument(String instrumentId, String userId) {
-        this.instrumentId = instrumentId;
+    public Instrument( String userId) {
+        this.instrumentId = IdGenerator.generateId();
         this.userId = userId;
     }
 

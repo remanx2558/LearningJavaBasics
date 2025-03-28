@@ -1,12 +1,14 @@
 package PaymentGateway;
 
+import Common.util.IdGenerator;
+
 public class User {
     String id;
     String name;
     String email;
 
-    public User(String id, String name, String email) {
-        this.id = id;
+    public User(String name, String email) {
+        this.id = IdGenerator.generateId();
         this.name = name;
         this.email = email;
     }

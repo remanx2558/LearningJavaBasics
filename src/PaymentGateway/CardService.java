@@ -22,13 +22,17 @@ public class CardService extends InstrumentService{
 
 
     //add instrument
-    void addInstrument(String userId, InstrumentDO instrumentDO){
-        if(!userInstruments.containsKey(userId)){userInstruments.put(userId,new ArrayList<Instrument>());}
+    InstrumentDO addInstrument(InstrumentDO instrumentDO){
+        if(!userInstruments.containsKey(instrumentDO.getUserId())){userInstruments.put(instrumentDO.getUserId(),new ArrayList<Instrument>());}
 
-        CardInstrument cardInstrument=new CardInstrument(instrumentDO.getInstrumentId(),instrumentDO.getUserId());
+        CardInstrument cardInstrument=new CardInstrument(instrumentDO.getUserId());
         cardInstrument.setCardNumber(instrumentDO.getCardNumber());
         cardInstrument.setCvvNumber(instrumentDO.getCvvNumber());
-        userInstruments.get(userId).add(cardInstrument);
+        cardInstrument.setInstrumentType(InstrumentType.CARD);
+        userInstruments.get(instrumentDO.getUserId()).add(cardInstrument);
+
+        instrumentDO.setInstrumentId(cardInstrument.instrumentId);
+        return instrumentDO;
     }
     //get Instrument
 

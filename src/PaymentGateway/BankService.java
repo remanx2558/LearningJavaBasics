@@ -21,13 +21,17 @@ public class BankService extends InstrumentService{
     /// /
 
     //add instrument
-    void addInstrument(String userId, InstrumentDO instrumentDO){
-        if(!userInstruments.containsKey(userId)){userInstruments.put(userId,new ArrayList<Instrument>());}
+    InstrumentDO addInstrument(InstrumentDO instrumentDO){
+        if(!userInstruments.containsKey(instrumentDO.getUserId())){userInstruments.put(instrumentDO.getUserId(),new ArrayList<Instrument>());}
 
-        BankInstrument bankInstrument=new BankInstrument(instrumentDO.getInstrumentId(),instrumentDO.getUserId());
+        BankInstrument bankInstrument=new BankInstrument(instrumentDO.getUserId());
         bankInstrument.setBankAccountNumber(instrumentDO.getBankAccountNumber());
         bankInstrument.setIfsc(instrumentDO.getIfscNumber());
-        userInstruments.get(userId).add(bankInstrument);
+        bankInstrument.setInstrumentType(InstrumentType.BANK);
+        userInstruments.get(instrumentDO.getUserId()).add(bankInstrument);
+
+        instrumentDO.setInstrumentId(bankInstrument.instrumentId);
+        return instrumentDO;
     }
     //get Instrument
 

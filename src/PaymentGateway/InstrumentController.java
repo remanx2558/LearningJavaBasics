@@ -11,7 +11,7 @@ public class InstrumentController {
 
     void addInstrument(InstrumentDO instrumentDO){
         InstrumentService instrumentService=instrumentServiceFactory.getInstrumentService(instrumentDO.getType());
-        instrumentService.addInstrument(instrumentDO.getUserId(),instrumentDO);
+        instrumentService.addInstrument(instrumentDO);
     }
 
     Instrument getInstrument(InstrumentType type, String userId, String instrumentId){

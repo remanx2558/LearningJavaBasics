@@ -24,8 +24,7 @@ public class UserController {
     }
 
     UserDo addUser(UserDo user){
-        userService.addUser(user);
-        return user;
+        return userService.addUser(user);
     }
 
     User getuser(String userId){
