@@ -1,0 +1,16 @@
+
+
+This Object Pool Design pattern is used with Singleton design pattern and required thread safety while acquiring and releasing the resource.
+
+Category: Creational Design Pattern
+•⁠  ⁠Manages the pool of reusable objects like DBConnection object.
+•⁠  ⁠Borrow from the pool - use it → then return it back to the pool.
+Advantages:
+•⁠  ⁠Reduce the overhead of creating and destroying the frequently required object (generally resource intensive objects)
+•⁠  ⁠Reduce the latency, as it uses the pre initialized object.
+•⁠  ⁠Prevent Resource exhaustion by managing the number of resource intensive object creation.
+Disadvantages:
+•⁠  ⁠Resource Leakage can happen, if object is not handled properly and not being returned to the pool.
+•⁠  ⁠Required more memory because of managing the pool.
+•⁠  ⁠Pool management required thread safety, which is additional overhead.
+•⁠  ⁠Adds application complexity because of managing the pool.
