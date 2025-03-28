@@ -8,20 +8,20 @@ public class PaymentGatewayClient {
 
 
         //add user1
-        UserDo user1=new UserDo();
+        UserDTO user1=new UserDTO();
         user1.setName("yg");
         user1.setEmail("yashwant@gmail.com");
-        UserDo user1Dtails=paymentGateway.userController.addUser(user1);
+        UserDTO user1Dtails=paymentGateway.userController.addUser(user1);
 
         //add user2
-        UserDo user2=new UserDo();
+        UserDTO user2=new UserDTO();
         user2.setName("kt");
         user2.setEmail("kittu@gmail.com");
-        UserDo user2Dtails=paymentGateway.userController.addUser(user2);
+        UserDTO user2Dtails=paymentGateway.userController.addUser(user2);
 
 
         //add bank to user1
-        InstrumentDO bankInstrumentDO=new InstrumentDO();
+        InstrumentDTO bankInstrumentDO=new InstrumentDTO();
         bankInstrumentDO.setBankAccountNumber("123");
         bankInstrumentDO.setIfscNumber("345");
         bankInstrumentDO.setType(InstrumentType.BANK);
@@ -31,7 +31,7 @@ public class PaymentGatewayClient {
 
 
         //add card to user2
-        InstrumentDO cardInstrumentDO=new InstrumentDO();
+        InstrumentDTO cardInstrumentDO=new InstrumentDTO();
         cardInstrumentDO.setCardNumber("567");
         cardInstrumentDO.setCvvNumber("789");
         cardInstrumentDO.setType(InstrumentType.CARD);
@@ -42,12 +42,14 @@ public class PaymentGatewayClient {
 
         //make payment
 
-        TransactionDo transactionDo=new TransactionDo();
+        TransactionDTO transactionDo=new TransactionDTO();
         transactionDo.setAmount(10);
         transactionDo.setSenderUserId(user1.getId());
         transactionDo.setReceiverUserId(user2.getId());
         transactionDo.setSenderInstrumentId(bankInstrumentDO.instrumentId);
         transactionDo.setReceiverInstrumentId(cardInstrumentDO.getInstrumentId());
+        transactionDo.setReceiverInstrumentType(InstrumentType.BANK);
+        transactionDo.setSenderInstrumentType(InstrumentType.CARD);
         paymentGateway.transactionService.makePayment(transactionDo);
 
 

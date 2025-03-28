@@ -1,6 +1,6 @@
 package PaymentGateway;
 
-public class UserDo {
+public class UserDTO {
     String name;
     String email;
     String id;

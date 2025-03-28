@@ -9,9 +9,9 @@ public class InstrumentController {
         instrumentServiceFactory=new InstrumentServiceFactory();
     }
 
-    void addInstrument(InstrumentDO instrumentDO){
-        InstrumentService instrumentService=instrumentServiceFactory.getInstrumentService(instrumentDO.getType());
-        instrumentService.addInstrument(instrumentDO);
+    void addInstrument(InstrumentDTO instrumentDTO){
+        InstrumentService instrumentService=instrumentServiceFactory.getInstrumentService(instrumentDTO.getType());
+        instrumentService.addInstrument(instrumentDTO);
     }
 
     Instrument getInstrument(InstrumentType type, String userId, String instrumentId){

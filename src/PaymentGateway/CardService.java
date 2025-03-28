@@ -18,21 +18,21 @@ public class CardService extends InstrumentService{
         return instance;
     }
 
-    /// /
+
 
 
     //add instrument
-    InstrumentDO addInstrument(InstrumentDO instrumentDO){
-        if(!userInstruments.containsKey(instrumentDO.getUserId())){userInstruments.put(instrumentDO.getUserId(),new ArrayList<Instrument>());}
+    InstrumentDTO addInstrument(InstrumentDTO instrumentDTO){
+        if(!userInstruments.containsKey(instrumentDTO.getUserId())){userInstruments.put(instrumentDTO.getUserId(),new ArrayList<Instrument>());}
 
-        CardInstrument cardInstrument=new CardInstrument(instrumentDO.getUserId());
-        cardInstrument.setCardNumber(instrumentDO.getCardNumber());
-        cardInstrument.setCvvNumber(instrumentDO.getCvvNumber());
+        CardInstrument cardInstrument=new CardInstrument(instrumentDTO.getUserId());
+        cardInstrument.setCardNumber(instrumentDTO.getCardNumber());
+        cardInstrument.setCvvNumber(instrumentDTO.getCvvNumber());
         cardInstrument.setInstrumentType(InstrumentType.CARD);
-        userInstruments.get(instrumentDO.getUserId()).add(cardInstrument);
+        userInstruments.get(instrumentDTO.getUserId()).add(cardInstrument);
 
-        instrumentDO.setInstrumentId(cardInstrument.instrumentId);
-        return instrumentDO;
+        instrumentDTO.setInstrumentId(cardInstrument.instrumentId);
+        return instrumentDTO;
     }
     //get Instrument
 

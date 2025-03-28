@@ -1,6 +1,6 @@
 package PaymentGateway;
 
-public class InstrumentDO {
+public class InstrumentDTO {
     String instrumentId;
     InstrumentType type;
     String userId;

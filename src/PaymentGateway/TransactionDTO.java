@@ -1,18 +1,28 @@
 package PaymentGateway;
 
-public class TransactionDo {
+public class TransactionDTO {
     String senderUserId;
     String receiverUserId;
     String senderInstrumentId;
     String receiverInstrumentId;
     double amount;
-    InstrumentType instrumentType;
-    public InstrumentType getInstrumentType() {
-        return instrumentType;
+    InstrumentType senderInstrumentType;
+    InstrumentType receiverInstrumentType;
+
+    public InstrumentType getReceiverInstrumentType() {
+        return receiverInstrumentType;
     }
 
-    public void setInstrumentType(InstrumentType instrumentType) {
-        this.instrumentType = instrumentType;
+    public void setReceiverInstrumentType(InstrumentType receiverInstrumentType) {
+        this.receiverInstrumentType = receiverInstrumentType;
+    }
+
+    public InstrumentType getSenderInstrumentType() {
+        return senderInstrumentType;
+    }
+
+    public void setSenderInstrumentType(InstrumentType senderInstrumentType) {
+        this.senderInstrumentType = senderInstrumentType;
     }
 
 

@@ -6,6 +6,7 @@ public class InstrumentServiceFactory {
         if(instrumentType==InstrumentType.CARD){
             CardService.getInstance();
         }
+        //else its bank
         return BankService.getInstance();
     }
 

@@ -4,22 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserService {
-    private List<User> userList;
+    static List<User> userList = new ArrayList<>();
 
-    UserService() {
-        userList = new ArrayList<>();
-    }
 
-    UserDo addUser(UserDo user) {
-        User user1=new User(user.getName(),user.getEmail());
+    UserDTO addUser(UserDTO userDo) {
+        User user1=new User(userDo.getName(),userDo.getEmail());
         userList.add(user1);
-        user.setId(user1.id);
-        return user;
+        //add missing elements in DO to return
+        userDo.setId(user1.id);
+        return userDo;
     }
 
     User getUser(String userId) {
         for (User user : userList) {
-            if (user.getId().equals(userId)) {
+            if (user.getId().compareTo(userId)==0) {
                 return user;
             }
         }

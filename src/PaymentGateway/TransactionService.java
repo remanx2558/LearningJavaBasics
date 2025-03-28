@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class TransactionService {
     InstrumentController instrumentController;
-    Map<User, List<Transaction>> transactionMap;
+    public static Map<User, List<Transaction>> transactionMap;
     Processor processor;
 
     TransactionService(){
@@ -15,9 +15,10 @@ public class TransactionService {
         instrumentController=new InstrumentController();
     }
 
-    void makePayment(TransactionDo tranactionDO){
-        Instrument instrument=instrumentController.getInstrument(tranactionDO.getInstrumentType(),tranactionDO.getSenderUserId(),tranactionDO.getSenderInstrumentId());
-        processor.processPayment(tranactionDO);
+    void makePayment(TransactionDTO tranactionDO){
+        Instrument senderInstrument=instrumentController.getInstrument(tranactionDO.getSenderInstrumentType(),tranactionDO.getSenderUserId(),tranactionDO.getSenderInstrumentId());
+        Instrument receiverInstrument=instrumentController.getInstrument(tranactionDO.getReceiverInstrumentType(),tranactionDO.getReceiverUserId(),tranactionDO.getReceiverInstrumentId());
+        processor.processPayment(senderInstrument,receiverInstrument,tranactionDO.getAmount());
     }
     List<Transaction> getTxnHistroy(User user){
        return transactionMap.get(user);

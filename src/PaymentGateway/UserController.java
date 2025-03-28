@@ -3,7 +3,8 @@ package PaymentGateway;
 public class UserController {
 
 
-    static UserController instance;
+
+    static private UserController instance;
 
     static UserController getInstance(){
         if(instance==null){
@@ -23,7 +24,7 @@ public class UserController {
         userService=new UserService();
     }
 
-    UserDo addUser(UserDo user){
+    UserDTO addUser(UserDTO user){
         return userService.addUser(user);
     }
 
