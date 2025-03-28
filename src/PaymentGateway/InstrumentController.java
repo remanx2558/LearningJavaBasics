@@ -1,5 +1,8 @@
 package PaymentGateway;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class InstrumentController {
     InstrumentServiceFactory instrumentServiceFactory;
     InstrumentController(){
@@ -14,5 +17,12 @@ public class InstrumentController {
     Instrument getInstrument(InstrumentType type, String userId, String instrumentId){
         InstrumentService instrumentService=instrumentServiceFactory.getInstrumentService(type);
         return instrumentService.getInstrument(userId,instrumentId);
+    }
+
+    List<Instrument> getAllInstrument(String userId){
+        List<Instrument> instrumentList=new ArrayList<>();
+
+
+        return instrumentList;
     }
 }

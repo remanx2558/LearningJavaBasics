@@ -1,6 +1,11 @@
 package PaymentGateway;
 
 public class UserDo {
+    String name;
+    String email;
+    String id;
+
+
     public String getName() {
         return name;
     }
@@ -17,8 +22,6 @@ public class UserDo {
         this.email = email;
     }
 
-    String name;
-    String email;
 
     public String getId() {
         return id;
@@ -28,7 +31,7 @@ public class UserDo {
         this.id = id;
     }
 
-    String id;
+
 
 
 }

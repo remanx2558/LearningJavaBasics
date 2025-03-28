@@ -41,5 +41,10 @@ public class BankService extends InstrumentService{
         return null;
     }
 
+    List<Instrument> getAllInstrument(String userId){
+        List<Instrument> instrumentList=userInstruments.get(userId);
+        return instrumentList;
+    }
+
 
 }

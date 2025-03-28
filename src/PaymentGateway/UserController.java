@@ -7,8 +7,9 @@ public class UserController {
         userService=new UserService();
     }
 
-    void addUser(UserDo user){
+    UserDo addUser(UserDo user){
         userService.addUser(user);
+        return user;
     }
 
     User getuser(String userId){
