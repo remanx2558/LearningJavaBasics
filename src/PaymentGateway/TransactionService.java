@@ -22,4 +22,9 @@ public class TransactionService {
     List<Transaction> getTxnHistroy(User user){
        return transactionMap.get(user);
     }
+
+    List<Transaction> getTxnHistroy(String userId){
+        User user=UserController.getInstance().getuser(userId);
+        return transactionMap.get(user);
+    }
 }

@@ -68,7 +68,7 @@ public class PaymentGatewayClient {
 
 
         //get all transaction History
-        List<Transaction> user1transaction=paymentGateway.transactionService.getTxnHistroy(user1);
+        List<Transaction> user1transaction=paymentGateway.transactionService.getTxnHistroy(user1.getId());
         for (Transaction transaction: user1transaction){
             System.out.println(transaction.getTxnId()+" * ");
         }

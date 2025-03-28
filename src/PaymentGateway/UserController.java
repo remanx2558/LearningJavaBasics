@@ -2,6 +2,22 @@ package PaymentGateway;
 
 public class UserController {
 
+
+    static UserController instance;
+
+    static UserController getInstance(){
+        if(instance==null){
+            synchronized (UserController.class){
+                if(instance==null){
+                    instance=new UserController();
+                }
+            }
+        }
+        return instance;
+    }
+
+
+
     UserService userService;
     UserController(){
         userService=new UserService();

@@ -20,9 +20,8 @@ public class InstrumentController {
     }
 
     List<Instrument> getAllInstrument(String userId){
-        List<Instrument> instrumentList=new ArrayList<>();
-
-
+        List<Instrument> instrumentList=new ArrayList<>(instrumentServiceFactory.getInstrumentService(InstrumentType.BANK).getAllInstrument(userId));
+        instrumentList.addAll(instrumentServiceFactory.getInstrumentService(InstrumentType.CARD).getAllInstrument(userId));
         return instrumentList;
     }
 }
