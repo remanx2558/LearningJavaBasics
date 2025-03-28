@@ -7,70 +7,74 @@ import java.util.logging.Logger;
 public class DBConnectionPoolManager {
 
     private static volatile DBConnectionPoolManager instance;
-    private final Logger logger= Logger.getLogger(DBConnectionPoolManager.class.getName());
+    private final Logger logger = Logger.getLogger(DBConnectionPoolManager.class.getName());
 
-    private final int MAX_POOL_SIZE=6;
-    private final int INIT_POOL_SIZE=3;
+    private final int MAX_POOL_SIZE = 6;
+    private final int INIT_POOL_SIZE = 3;
 
     private final List<DBConnectionResource> freeResources;
     private final List<DBConnectionResource> inUseResources;
 
-    private DBConnectionPoolManager(){
-        freeResources=new ArrayList<>();
-        inUseResources=new ArrayList<>();
+    private DBConnectionPoolManager() {
+        freeResources = new ArrayList<>();
+        inUseResources = new ArrayList<>();
         initiateDbPool();
     }
 
-    static public DBConnectionPoolManager getInstance(){
-        if(instance==null){
-            synchronized (DBConnectionPoolManager.class){
-                if(instance==null){
-                    instance=new DBConnectionPoolManager();
+    public static DBConnectionPoolManager getInstance() {
+        if (instance == null) {
+            synchronized (DBConnectionPoolManager.class) {
+                if (instance == null) {
+                    instance = new DBConnectionPoolManager();
                 }
             }
         }
         return instance;
     }
 
-
-    private void initiateDbPool(){
-        for(int i=0;i<INIT_POOL_SIZE;i++){
+    private void initiateDbPool() {
+        for (int i = 0; i < INIT_POOL_SIZE; i++) {
             freeResources.add(new DBConnectionResource());
         }
     }
 
+    public synchronized DBConnectionResource getResource() {
+        try {
+            if (freeResources.isEmpty() && inUseResources.size() < MAX_POOL_SIZE) {
+                logger.info("Creating new DBConnectionResource as pool resources are utilized.");
+                DBConnectionResource dbConnectionResource = new DBConnectionResource();
+                inUseResources.add(dbConnectionResource);
+                return dbConnectionResource;
+            } else if (freeResources.isEmpty() && inUseResources.size() >= MAX_POOL_SIZE) {
+                logger.warning("Maximum pool size reached, no available resources.");
+                // Handle situation gracefully: return null or wait
+                return null; // or implement a waiting mechanism if needed
+            }
 
-    //Bussiness Logic here: when we put throws on method??
-    //when we put synchronized on method??
-    //when we put synchroized in block??
-    public synchronized DBConnectionResource getResource() throws RuntimeException{
-        if(freeResources.isEmpty() && inUseResources.size()<MAX_POOL_SIZE){
-            logger.info("Creating new DBConnectionResource as pool resources are utilized.");
-            DBConnectionResource dbConnectionResource=new DBConnectionResource();
+            DBConnectionResource dbConnectionResource = freeResources.remove(freeResources.size() - 1);
             inUseResources.add(dbConnectionResource);
             return dbConnectionResource;
+        } catch (Exception e) {
+            logger.severe("Failed to get resource: " + e.getMessage());
+            return null;
         }
-        else if(freeResources.isEmpty() && inUseResources.size()>=MAX_POOL_SIZE){
-            throw new RuntimeException("Maximum pool size reached, no available resources.");
-        }
-
-        //get the last element
-        DBConnectionResource dbConnectionResource=freeResources.remove(freeResources.size()-1);
-        inUseResources.add(dbConnectionResource);
-        return dbConnectionResource;
     }
 
-    public void freeResource(DBConnectionResource resource) throws IllegalArgumentException, IllegalStateException{
-        if(resource==null){
-            throw new IllegalArgumentException("Resource cannot be null.");
-        }
-        else if(!inUseResources.contains(resource)){
-            throw new IllegalStateException("Resource not found in in-use resources.");
-        }
+    public void freeResource(DBConnectionResource resource) {
+        try {
+            if (resource == null) {
+                logger.warning("Failed to free resource: Resource cannot be null.");
+                return;
+            } else if (!inUseResources.contains(resource)) {
+                logger.warning("Failed to free resource: Resource not found in in-use resources.");
+                return;
+            }
 
-        inUseResources.remove(resource);
-        freeResources.add(resource);
-        logger.info("Resource has been freed and added back to the pool.");
-
+            inUseResources.remove(resource);
+            freeResources.add(resource);
+            logger.info("Resource has been freed and added back to the pool.");
+        } catch (Exception e) {
+            logger.severe("Error freeing resource: " + e.getMessage());
+        }
     }
 }
