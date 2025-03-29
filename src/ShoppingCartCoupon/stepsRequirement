@@ -1,0 +1,9 @@
+1. add coupoun on product
+2. remove coupoun on product
+3. add coupoun on overall cart purchase.
+4. remove coupoun on overall cart purchase.
+5. Add/remove coupouns in any order should be possible.
+6. lets consider 3 coupouns for now:
+        c1. n% off on all the indiviual products
+        c2. p% off on next item added, meaning indivial product contains some coupouns
+        c3. d% off on nth item of type T
