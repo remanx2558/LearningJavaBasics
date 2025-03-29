@@ -1,11 +1,11 @@
-package PaymentGateway;
+package PaymentGateway.Entities;
 
-public class CardInstrument extends Instrument{
+public class CardInstrument extends Instrument {
 
     String cardNumber;
     String cvvNumber;
 
-    CardInstrument(String userId ){
+    public CardInstrument(String userId ){
         super(userId);
     }
 

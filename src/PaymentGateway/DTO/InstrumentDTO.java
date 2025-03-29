@@ -1,7 +1,9 @@
-package PaymentGateway;
+package PaymentGateway.DTO;
+
+import PaymentGateway.enums.InstrumentType;
 
 public class InstrumentDTO {
-    String instrumentId;
+    public String instrumentId;
     InstrumentType type;
     String userId;
     String bankAccountNumber;

@@ -1,4 +1,8 @@
-package PaymentGateway;
+package PaymentGateway.Controller;
+
+import PaymentGateway.DTO.UserDTO;
+import PaymentGateway.Entities.User;
+import PaymentGateway.Services.UserService;
 
 public class UserController {
 
@@ -6,7 +10,7 @@ public class UserController {
 
     static private UserController instance;
 
-    static UserController getInstance(){
+    public static UserController getInstance(){
         if(instance==null){
             synchronized (UserController.class){
                 if(instance==null){
@@ -24,11 +28,11 @@ public class UserController {
         userService=new UserService();
     }
 
-    UserDTO addUser(UserDTO user){
+    public UserDTO addUser(UserDTO user){
         return userService.addUser(user);
     }
 
-    User getuser(String userId){
+    public User getuser(String userId){
         return userService.getUser(userId);
     }
 }

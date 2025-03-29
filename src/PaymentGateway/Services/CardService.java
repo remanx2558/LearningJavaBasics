@@ -1,13 +1,18 @@
-package PaymentGateway;
+package PaymentGateway.Services;
+
+import PaymentGateway.DTO.InstrumentDTO;
+import PaymentGateway.Entities.CardInstrument;
+import PaymentGateway.Entities.Instrument;
+import PaymentGateway.enums.InstrumentType;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CardService extends InstrumentService{
+public class CardService extends InstrumentService {
 
     static CardService instance;
 
-    static CardService getInstance(){
+   public static CardService getInstance(){
         if(instance==null){
             synchronized (CardService.class){
                 if(instance==null){
@@ -22,7 +27,7 @@ public class CardService extends InstrumentService{
 
 
     //add instrument
-    InstrumentDTO addInstrument(InstrumentDTO instrumentDTO){
+    public InstrumentDTO addInstrument(InstrumentDTO instrumentDTO){
         if(!userInstruments.containsKey(instrumentDTO.getUserId())){userInstruments.put(instrumentDTO.getUserId(),new ArrayList<Instrument>());}
 
         CardInstrument cardInstrument=new CardInstrument(instrumentDTO.getUserId());
@@ -36,7 +41,7 @@ public class CardService extends InstrumentService{
     }
     //get Instrument
 
-    Instrument getInstrument(String userId, String instrumentId){
+    public Instrument getInstrument(String userId, String instrumentId){
         List<Instrument> instrumentList=userInstruments.get(userId);
         if(instrumentList!=null){
             for(Instrument instrument:instrumentList){
@@ -46,7 +51,7 @@ public class CardService extends InstrumentService{
         return null;
     }
 
-    List<Instrument> getAllInstrument(String userId){
+    public List<Instrument> getAllInstrument(String userId){
         List<Instrument> instrumentList=userInstruments.get(userId);
         return instrumentList;
     }

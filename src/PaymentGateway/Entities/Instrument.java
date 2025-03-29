@@ -1,9 +1,10 @@
-package PaymentGateway;
+package PaymentGateway.Entities;
 
 import Common.util.IdGenerator;
+import PaymentGateway.enums.InstrumentType;
 
 public abstract class Instrument {
-    String instrumentId;
+    public String instrumentId;
     String userId;
     InstrumentType instrumentType;
 

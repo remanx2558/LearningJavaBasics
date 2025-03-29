@@ -1,4 +1,4 @@
-package PaymentGateway;
+package PaymentGateway.DTO;
 
 public class UserDTO {
     String name;

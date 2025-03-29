@@ -1,5 +1,12 @@
 package PaymentGateway;
 
+import PaymentGateway.DTO.InstrumentDTO;
+import PaymentGateway.DTO.TransactionDTO;
+import PaymentGateway.DTO.UserDTO;
+import PaymentGateway.Entities.Instrument;
+import PaymentGateway.Entities.Transaction;
+import PaymentGateway.enums.InstrumentType;
+
 import java.util.List;
 
 public class PaymentGatewayClient {
@@ -25,7 +32,7 @@ public class PaymentGatewayClient {
         bankInstrumentDO.setBankAccountNumber("123");
         bankInstrumentDO.setIfscNumber("345");
         bankInstrumentDO.setType(InstrumentType.BANK);
-        bankInstrumentDO.setUserId(user1.getId());
+        bankInstrumentDO.setUserId(user1Dtails.getId());
 
         paymentGateway.instrumentController.addInstrument(bankInstrumentDO);
 
@@ -35,7 +42,7 @@ public class PaymentGatewayClient {
         cardInstrumentDO.setCardNumber("567");
         cardInstrumentDO.setCvvNumber("789");
         cardInstrumentDO.setType(InstrumentType.CARD);
-        cardInstrumentDO.setUserId(user2.getId());
+        cardInstrumentDO.setUserId(user2Dtails.getId());
 
         paymentGateway.instrumentController.addInstrument(cardInstrumentDO);
 
@@ -44,17 +51,21 @@ public class PaymentGatewayClient {
 
         TransactionDTO transactionDo=new TransactionDTO();
         transactionDo.setAmount(10);
-        transactionDo.setSenderUserId(user1.getId());
-        transactionDo.setReceiverUserId(user2.getId());
+
+        transactionDo.setSenderUserId(user1Dtails.getId());
+        transactionDo.setReceiverUserId(user2Dtails.getId());
+
+        transactionDo.setSenderInstrumentType(InstrumentType.BANK);
+        transactionDo.setReceiverInstrumentType(InstrumentType.CARD);
+
         transactionDo.setSenderInstrumentId(bankInstrumentDO.instrumentId);
-        transactionDo.setReceiverInstrumentId(cardInstrumentDO.getInstrumentId());
-        transactionDo.setReceiverInstrumentType(InstrumentType.BANK);
-        transactionDo.setSenderInstrumentType(InstrumentType.CARD);
+        transactionDo.setReceiverInstrumentId(cardInstrumentDO.instrumentId);
+
         paymentGateway.transactionService.makePayment(transactionDo);
 
 
         //get all instruments  of user2
-        List<Instrument> user1Instruments=paymentGateway.instrumentController.getAllInstrument(user1.getId());
+        List<Instrument> user1Instruments=paymentGateway.instrumentController.getAllInstrument(user1Dtails.getId());
         for(Instrument instrument:user1Instruments){
             System.out.println(instrument.getInstrumentId()+" * ");
         }
@@ -63,14 +74,14 @@ public class PaymentGatewayClient {
 
 
         //get all instruments  of user2
-        List<Instrument> user2Instruments=paymentGateway.instrumentController.getAllInstrument(user2.getId());
+        List<Instrument> user2Instruments=paymentGateway.instrumentController.getAllInstrument(user2Dtails.getId());
         for(Instrument instrument:user2Instruments){
             System.out.println(instrument.getInstrumentId()+" * ");
         }
 
 
         //get all transaction History
-        List<Transaction> user1transaction=paymentGateway.transactionService.getTxnHistroy(user1.getId());
+        List<Transaction> user1transaction=paymentGateway.transactionService.getTxnHistroy(user1Dtails.getId());
         for (Transaction transaction: user1transaction){
             System.out.println(transaction.getTxnId()+" * ");
         }

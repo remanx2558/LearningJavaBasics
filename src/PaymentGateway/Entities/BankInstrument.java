@@ -1,9 +1,9 @@
-package PaymentGateway;
+package PaymentGateway.Entities;
 
-public class BankInstrument extends Instrument{
+public class BankInstrument extends Instrument {
     String bankAccountNumber;
     String ifsc;
-    BankInstrument(String userId ){
+    public BankInstrument(String userId ){
         super(userId);
     }
 

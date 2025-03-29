@@ -1,30 +1,34 @@
-package PaymentGateway;
+package PaymentGateway.Entities;
 
-public class TransactionDTO {
+import PaymentGateway.enums.InstrumentType;
+import PaymentGateway.enums.TransactionStatus;
+
+public class Transaction {
+    String txnId;
     String senderUserId;
     String receiverUserId;
     String senderInstrumentId;
     String receiverInstrumentId;
     double amount;
-    InstrumentType senderInstrumentType;
-    InstrumentType receiverInstrumentType;
 
-    public InstrumentType getReceiverInstrumentType() {
-        return receiverInstrumentType;
+    public InstrumentType getInstrumentType() {
+        return instrumentType;
     }
 
-    public void setReceiverInstrumentType(InstrumentType receiverInstrumentType) {
-        this.receiverInstrumentType = receiverInstrumentType;
+    public void setInstrumentType(InstrumentType instrumentType) {
+        this.instrumentType = instrumentType;
     }
 
-    public InstrumentType getSenderInstrumentType() {
-        return senderInstrumentType;
+    TransactionStatus status;
+    InstrumentType instrumentType;
+
+    public String getTxnId() {
+        return txnId;
     }
 
-    public void setSenderInstrumentType(InstrumentType senderInstrumentType) {
-        this.senderInstrumentType = senderInstrumentType;
+    public void setTxnId(String txnId) {
+        this.txnId = txnId;
     }
-
 
     public String getSenderUserId() {
         return senderUserId;
@@ -64,5 +68,13 @@ public class TransactionDTO {
 
     public void setAmount(double amount) {
         this.amount = amount;
+    }
+
+    public TransactionStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(TransactionStatus status) {
+        this.status = status;
     }
 }

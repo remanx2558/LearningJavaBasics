@@ -1,9 +1,9 @@
-package PaymentGateway;
+package PaymentGateway.Entities;
 
 import Common.util.IdGenerator;
 
 public class User {
-    String id;
+    public String id;
     String name;
     String email;
 

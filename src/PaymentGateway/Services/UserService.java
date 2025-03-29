@@ -1,4 +1,7 @@
-package PaymentGateway;
+package PaymentGateway.Services;
+
+import PaymentGateway.DTO.UserDTO;
+import PaymentGateway.Entities.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,7 +10,7 @@ public class UserService {
     static List<User> userList = new ArrayList<>();
 
 
-    UserDTO addUser(UserDTO userDo) {
+    public UserDTO addUser(UserDTO userDo) {
         User user1=new User(userDo.getName(),userDo.getEmail());
         userList.add(user1);
         //add missing elements in DO to return
@@ -15,7 +18,7 @@ public class UserService {
         return userDo;
     }
 
-    User getUser(String userId) {
+    public User getUser(String userId) {
         for (User user : userList) {
             if (user.getId().compareTo(userId)==0) {
                 return user;
