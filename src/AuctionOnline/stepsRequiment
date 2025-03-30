@@ -1,0 +1,18 @@
+
+
+- seller
+- Admin
+- Auction Master
+- Bidder
+
+
+- Auction Start for an Item at particular date and time
+- Seller can register items to auction, but admin decides when to sell them
+- Admin start the Auction sesion at a particular time , with list of items to sell
+- Every item start with an base price
+- Nobody takes the bid then item, remain unsold
+- People make bids, system wait for some time for higher bid, if no one bids its get sold to higherst bidder , else bid is increased.
+- After selling one item , another item is put into display
+- we can track which item are present, sold, unsold at current moment
+- Admin makes an post , where seller register their products to sell
+- Then Bidder window opens where they register and to see items in display on an particular date
