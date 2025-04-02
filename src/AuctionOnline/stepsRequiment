@@ -16,3 +16,13 @@
 - we can track which item are present, sold, unsold at current moment
 - Admin makes an post , where seller register their products to sell
 - Then Bidder window opens where they register and to see items in display on an particular date
+
+
+
+//Classes
+
+- Bidder: leave auction, subscribe, unsubscribe , make a bid,
+- Item to bid
+- Auction: id, list of item, time of event, actual start time,particicpatns
+- AuctionItem: sold or not, seller, pushcaser, final price, actual item,
+- Notification system: get input and update listners,
