@@ -1,22 +1,20 @@
-package SocketProgramming;
+package SocketProgramming.mediumExample;
 
 import java.io.*;
-import java.net.ServerSocket;
 import java.net.Socket;
 
-public class ChatServer {
+public class ChatClient {
 
     public static void main(String args[]){
 
         try{
-            ServerSocket serverSocket=new ServerSocket(9090);
-            Socket clientSocket=serverSocket.accept();
+            Socket serverSocket=new Socket("localhost",9090);
 
             //read
-            DataInputStream dis=new DataInputStream(clientSocket.getInputStream());
+            DataInputStream dis=new DataInputStream(serverSocket.getInputStream());
             BufferedReader consoleBR=new BufferedReader(new InputStreamReader(System.in));
             //write
-            DataOutputStream dos=new DataOutputStream(clientSocket.getOutputStream());
+            DataOutputStream dos=new DataOutputStream(serverSocket.getOutputStream());
 
             //send receive message till client says exit
             String receivedMessage=null;
@@ -24,14 +22,14 @@ public class ChatServer {
             while (true){
                 //read Message 1st
                 receivedMessage=dis.readUTF();
-                System.out.println("client says: "+receivedMessage);
-                if(receivedMessage!=null && receivedMessage.equalsIgnoreCase("exit")){
-                    break;
-                }
+                System.out.println("server says: "+receivedMessage);
                 //send Message 2nd
                 sendMessage=consoleBR.readLine();
                 dos.writeUTF(sendMessage);
                 dos.flush();
+                if(sendMessage!=null && sendMessage.equalsIgnoreCase("exit")){
+                    break;
+                }
             }
 
             dis.close();
@@ -39,7 +37,7 @@ public class ChatServer {
             dos.close();
 
             //optional step to close client from here
-          //  clientSocket.close();
+            //  clientSocket.close();
             serverSocket.close();
 
 
