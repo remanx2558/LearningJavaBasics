@@ -1,4 +1,4 @@
-package MultiThread.InterThreadCommunication;
+package CoreJava.MultiThread.InterThreadCommunication;
 
 public class SlaveThread extends Thread{
 

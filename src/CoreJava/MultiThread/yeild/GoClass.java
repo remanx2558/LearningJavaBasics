@@ -1,4 +1,4 @@
-package MultiThread.yeild;
+package CoreJava.MultiThread.yeild;
 
 public class GoClass {
     public static void main(String args[]){

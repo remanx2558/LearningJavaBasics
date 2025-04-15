@@ -1,4 +1,4 @@
-package MultiThread.interrupt;
+package CoreJava.MultiThread.interrupt;
 
 public class SubmissiveTwo extends Thread{
 

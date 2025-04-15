@@ -1,6 +1,4 @@
-package MultiThread.deadLock;
-
-import MultiThread.demon.DemonThread;
+package CoreJava.MultiThread.deadLock;
 
 public class DeadLockDemo implements Runnable{
 

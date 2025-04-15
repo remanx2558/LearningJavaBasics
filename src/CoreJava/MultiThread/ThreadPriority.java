@@ -1,6 +1,4 @@
-package MultiThread;
-
-import java.util.Scanner;
+package CoreJava.MultiThread;
 
 public class ThreadPriority extends Thread {
 

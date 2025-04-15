@@ -1,4 +1,4 @@
-package MultiThread.deadLock;
+package CoreJava.MultiThread.deadLock;
 
 public class SecondResource{
 

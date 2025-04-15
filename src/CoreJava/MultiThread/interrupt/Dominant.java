@@ -1,4 +1,4 @@
-package MultiThread.interrupt;
+package CoreJava.MultiThread.interrupt;
 
 public class Dominant {
     public static void main(String args[]){

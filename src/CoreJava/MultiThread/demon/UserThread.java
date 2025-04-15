@@ -1,4 +1,4 @@
-package MultiThread.demon;
+package CoreJava.MultiThread.demon;
 
 public class UserThread {
     public static void main(String args[]){

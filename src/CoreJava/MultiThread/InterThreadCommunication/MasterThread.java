@@ -1,4 +1,4 @@
-package MultiThread.InterThreadCommunication;
+package CoreJava.MultiThread.InterThreadCommunication;
 
 public class MasterThread {
     public static void main(String args[]){

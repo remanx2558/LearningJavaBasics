@@ -1,4 +1,4 @@
-package MultiThread;
+package CoreJava.MultiThread;
 
 import java.util.Scanner;
 

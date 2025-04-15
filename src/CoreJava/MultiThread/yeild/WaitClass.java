@@ -1,4 +1,4 @@
-package MultiThread.yeild;
+package CoreJava.MultiThread.yeild;
 
 public class WaitClass extends Thread{
     // Un Comment each Thread.yield() to see the differene in output

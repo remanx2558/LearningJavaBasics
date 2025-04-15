@@ -1,4 +1,4 @@
-package MultiThread;
+package CoreJava.MultiThread;
 
 public class PrintNumber extends Thread{
 

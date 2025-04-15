@@ -1,4 +1,4 @@
-package MultiThread.demon;
+package CoreJava.MultiThread.demon;
 
 public class DemonThread extends Thread{
     public void run(){
